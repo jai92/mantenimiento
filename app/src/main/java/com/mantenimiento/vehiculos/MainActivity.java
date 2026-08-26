@@ -144,6 +144,27 @@ public class MainActivity extends Activity {
       }catch(Exception e){ e.printStackTrace(); runJs("window.toast && window.toast('No se pudo generar el PDF')"); }
     }
 
+
+    @JavascriptInterface public void generateExcel(String filename, String html){
+      try{
+        if(!filename.toLowerCase().endsWith(".xls")) filename += ".xls";
+        File dir=new File(getCacheDir(),"excel"); if(!dir.exists()) dir.mkdirs();
+        File f=new File(dir,filename);
+        try(FileOutputStream out=new FileOutputStream(f)){
+          out.write(html.getBytes(StandardCharsets.UTF_8));
+        }
+        Uri uri=FileProvider.getUriForFile(MainActivity.this,getPackageName()+".provider",f);
+        Intent share=new Intent(Intent.ACTION_SEND);
+        share.setType("application/vnd.ms-excel");
+        share.putExtra(Intent.EXTRA_STREAM,uri);
+        share.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+        startActivity(Intent.createChooser(share,"Guardar o compartir Excel"));
+      }catch(Exception e){
+        e.printStackTrace();
+        runJs("window.toast && window.toast('No se pudo generar el Excel')");
+      }
+    }
+
     @JavascriptInterface public void createBackup(String filename, String json){
       pendingBackupJson=json;
       Intent i=new Intent(Intent.ACTION_CREATE_DOCUMENT);
