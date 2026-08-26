@@ -6,4 +6,4 @@
         <item name="android:statusBarColor">#F6F7F9</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
-</resources>
+<color name="icon_background">#EAF2FF</color></resources>
