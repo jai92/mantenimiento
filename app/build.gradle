@@ -1,7 +1,7 @@
 plugins { id 'com.android.application' }
 
 android { namespace 'com.mantenimiento.vehiculos'; compileSdk 35
-    defaultConfig { applicationId 'com.mantenimiento.vehiculos'; minSdk 23; targetSdk 35; versionCode 15; versionName '1.14' }
+    defaultConfig { applicationId 'com.mantenimiento.vehiculos'; minSdk 23; targetSdk 35; versionCode 17; versionName '1.14' }
 }
 
 dependencies { implementation 'androidx.core:core:1.13.1' }

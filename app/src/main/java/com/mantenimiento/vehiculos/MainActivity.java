@@ -113,6 +113,47 @@ public class MainActivity extends Activity {
   }
 
   public class AppBridge {
+
+    @JavascriptInterface public boolean savePhoto(String id, String dataUrl){
+      try{
+        if(id==null || id.isEmpty() || dataUrl==null || dataUrl.isEmpty()) return false;
+        String base64=dataUrl;
+        int comma=base64.indexOf(',');
+        if(comma>=0) base64=base64.substring(comma+1);
+        byte[] bytes=android.util.Base64.decode(base64, android.util.Base64.DEFAULT);
+        File dir=new File(getFilesDir(),"vehicle_photos");
+        if(!dir.exists() && !dir.mkdirs()) return false;
+        File f=new File(dir,safeFileName(id)+".jpg");
+        try(FileOutputStream out=new FileOutputStream(f)){ out.write(bytes); }
+        return true;
+      }catch(Exception e){ e.printStackTrace(); return false; }
+    }
+
+    @JavascriptInterface public String getPhoto(String id){
+      try{
+        if(id==null || id.isEmpty()) return "";
+        File f=new File(new File(getFilesDir(),"vehicle_photos"),safeFileName(id)+".jpg");
+        if(!f.exists()) return "";
+        byte[] bytes=readFile(f);
+        return "data:image/jpeg;base64,"+android.util.Base64.encodeToString(bytes, android.util.Base64.NO_WRAP);
+      }catch(Exception e){ return ""; }
+    }
+
+    @JavascriptInterface public boolean deletePhoto(String id){
+      try{
+        if(id==null || id.isEmpty()) return false;
+        File f=new File(new File(getFilesDir(),"vehicle_photos"),safeFileName(id)+".jpg");
+        return !f.exists() || f.delete();
+      }catch(Exception e){ return false; }
+    }
+
+    private String safeFileName(String id){ return id.replaceAll("[^A-Za-z0-9._-]","_"); }
+    private byte[] readFile(File f) throws IOException{
+      try(InputStream in=new FileInputStream(f); ByteArrayOutputStream out=new ByteArrayOutputStream()){
+        byte[] buf=new byte[8192]; int n; while((n=in.read(buf))!=-1) out.write(buf,0,n); return out.toByteArray();
+      }
+    }
+
     @JavascriptInterface public void generatePdf(String filename, String text){
       try{
         if(!filename.endsWith(".pdf")) filename += ".pdf";
