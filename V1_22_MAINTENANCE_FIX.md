@@ -1,0 +1,1 @@
+V1.22: real maintenance scheduling UI and three priority groups. Dynamic km/month fields are rendered based on selected mode; priority groups are explicitly separated.
