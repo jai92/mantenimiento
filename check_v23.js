@@ -1,16 +1,4 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f6f7f9">
-<title>Vehículos</title>
-<style>
-*{box-sizing:border-box}body{margin:0;background:#f6f7f9;color:#17202a;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{border:0;border-radius:14px;padding:13px 15px;background:#e9edf2;color:#17202a;font-weight:700;min-height:44px}button.primary{background:#1769e0;color:#fff}button.danger{background:#ffe5e5;color:#b42318}.app{max-width:760px;margin:auto;padding:34px 16px calc(90px + env(safe-area-inset-bottom))}.top{display:flex;align-items:center;margin:0 0 20px;gap:12px;min-height:52px}.title{font-size:28px;font-weight:800;line-height:1.1}.sub{color:#697586}.card{background:#fff;border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 2px 10px #0000000b}.vehicle{cursor:pointer;display:flex;gap:14px;align-items:center}.vehiclePhoto{width:82px;height:82px;object-fit:cover;border-radius:16px;background:#edf1f5;flex:0 0 82px}.vehicleInfo{min-width:0;flex:1}.vehicle h3{margin:0 0 4px;font-size:18px}.km{font-size:15px;color:#667085}.status{margin-top:10px;font-weight:750}.green{color:#17803d}.orange{color:#b26a00}.red{color:#c62828}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.section{margin-top:22px;font-size:16px;font-weight:800}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.small{font-size:13px}.muted{color:#7b8794}.form{background:#fff;border-radius:18px;padding:16px;margin:10px 0}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;color:#667085;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #d9dee7;border-radius:12px;background:#fff}.field textarea{min-height:80px;resize:vertical}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:10px 12px;border-radius:999px;background:#edf1f5}.chip.on{background:#dbeafe;color:#1455a0}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none}.bigkm{font-size:32px;font-weight:850}.back{background:#e9edf2;padding:10px 14px;color:#1769e0;border-radius:12px;min-width:100px}.expense{font-size:28px;font-weight:850}.line{padding:12px 0;border-bottom:1px solid #edf0f3}.line:last-child{border-bottom:0}.toast{position:fixed;left:50%;bottom:82px;transform:translateX(-50%);background:#17202a;color:#fff;padding:10px 14px;border-radius:999px;display:none;z-index:100;max-width:90%;text-align:center}.photoBox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.photoPreview{width:110px;height:90px;object-fit:cover;border-radius:16px;background:#edf1f5}.emptyPhoto{width:110px;height:90px;border-radius:16px;background:#edf1f5;display:flex;align-items:center;justify-content:center;color:#7b8794;font-size:12px;text-align:center}.reportBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.reportBtns button{flex:1;min-width:150px}.modal{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}.modalBox{background:#fff;border-radius:20px;padding:18px;width:min(520px,100%);max-height:90vh;overflow:auto}.modalBox h3{margin:0 0 14px}.modalActions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}.typeIcon{font-size:20px;display:inline-block;width:30px}.recordActions{display:flex;gap:8px;margin-top:12px}.recordActions button{flex:1}.statusDot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 12px}.dotGreen{background:#22a447}.dotRed{background:#d92d20}.summary{background:#f8fafc;border:1px solid #edf0f3;border-radius:14px;padding:12px}.dangerText{color:#c62828}.inlineNote{font-size:12px;color:#667085;margin-top:4px}
-</style>
-</head>
-<body><div id="app"></div><div id="toast" class="toast"></div>
-<script>
+
 'use strict';
 const KEY='mv_v1';
 const uid=()=> (crypto&&crypto.randomUUID)?crypto.randomUUID():('v_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2));
@@ -402,4 +390,3 @@ function hydratePhotos(){if(typeof Android==='undefined')return;for(const v of d
 save();window.__nav=[];screen='home';selected=null;render();toast(uiLang==='en'?'Backup restored':'Copia restaurada')}catch(e){toast(uiLang==='en'?'Invalid backup':'Copia no válida')}}
 window.appBack=goBack;
 render();
-</script></body></html>
