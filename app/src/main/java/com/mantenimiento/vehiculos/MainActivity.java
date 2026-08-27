@@ -109,7 +109,7 @@ public class MainActivity extends Activity {
   }
 
   @Override public void onBackPressed(){
-    if(w!=null && w.canGoBack()) w.goBack(); else super.onBackPressed();
+    if(w!=null){ w.evaluateJavascript("window.appBack && window.appBack();", value -> {}); } else { super.onBackPressed(); }
   }
 
   public class AppBridge {
