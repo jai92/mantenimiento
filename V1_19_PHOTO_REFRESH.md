@@ -1,0 +1,1 @@
+V1.19: immediate in-memory photo refresh after vehicle creation and edit. Persistent photo storage from V1.16/V1.17 preserved.
