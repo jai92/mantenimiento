@@ -1,7 +1,37 @@
 plugins { id 'com.android.application' }
 
-android { namespace 'com.mantenimiento.vehiculos'; compileSdk 35
-    defaultConfig { applicationId 'com.mantenimiento.vehiculos'; minSdk 23; targetSdk 35; versionCode 23; versionName '1.14' }
+// Firma fija: así cada APK que compila GitHub se puede instalar encima del anterior sin desinstalar.
+def firmaProps = new Properties()
+def firmaFile = file('firma.properties')
+if (firmaFile.exists()) { firmaFile.withInputStream { firmaProps.load(it) } }
+def firmaPassword = System.getenv('SIGNING_PASSWORD') ?: firmaProps.getProperty('password', '')
+
+android {
+    namespace 'com.mantenimiento.vehiculos'
+    compileSdk 35
+
+    defaultConfig {
+        applicationId 'com.mantenimiento.vehiculos.nueva'
+        minSdk 23
+        targetSdk 35
+        versionCode 25
+        versionName '1.25'
+    }
+
+    signingConfigs {
+        fija {
+            storeFile file('vehiculos-firma.p12')
+            storeType 'pkcs12'
+            storePassword firmaPassword
+            keyAlias 'vehiculos'
+            keyPassword firmaPassword
+        }
+    }
+
+    buildTypes {
+        debug { signingConfig signingConfigs.fija }
+        release { signingConfig signingConfigs.fija; minifyEnabled false }
+    }
 }
 
 dependencies { implementation 'androidx.core:core:1.13.1' }

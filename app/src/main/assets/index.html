@@ -3,10 +3,105 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#f6f7f9">
+<meta name="theme-color" content="#f2f4f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b1020" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; connect-src 'none'; form-action 'none'; base-uri 'none'">
 <title>Vehículos</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#f6f7f9;color:#17202a;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,input,select,textarea{font:inherit}button{border:0;border-radius:14px;padding:13px 15px;background:#e9edf2;color:#17202a;font-weight:700;min-height:44px}button.primary{background:#1769e0;color:#fff}button.danger{background:#ffe5e5;color:#b42318}.app{max-width:760px;margin:auto;padding:34px 16px calc(90px + env(safe-area-inset-bottom))}.top{display:flex;align-items:center;margin:0 0 20px;gap:12px;min-height:52px}.title{font-size:28px;font-weight:800;line-height:1.1}.sub{color:#697586}.card{background:#fff;border-radius:20px;padding:17px;margin:12px 0;box-shadow:0 2px 10px #0000000b}.vehicle{cursor:pointer;display:flex;gap:14px;align-items:center}.vehiclePhoto{width:82px;height:82px;object-fit:cover;border-radius:16px;background:#edf1f5;flex:0 0 82px}.vehicleInfo{min-width:0;flex:1}.vehicle h3{margin:0 0 4px;font-size:18px}.km{font-size:15px;color:#667085}.status{margin-top:10px;font-weight:750}.green{color:#17803d}.orange{color:#b26a00}.red{color:#c62828}.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.section{margin-top:22px;font-size:16px;font-weight:800}.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.small{font-size:13px}.muted{color:#7b8794}.form{background:#fff;border-radius:18px;padding:16px;margin:10px 0}.field{margin:12px 0}.field label{display:block;font-size:13px;font-weight:700;color:#667085;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #d9dee7;border-radius:12px;background:#fff}.field textarea{min-height:80px;resize:vertical}.chips{display:flex;flex-wrap:wrap;gap:8px}.chip{padding:10px 12px;border-radius:999px;background:#edf1f5}.chip.on{background:#dbeafe;color:#1455a0}.toolbar{display:flex;gap:8px;flex-wrap:wrap}.hidden{display:none}.bigkm{font-size:32px;font-weight:850}.back{background:#e9edf2;padding:10px 14px;color:#1769e0;border-radius:12px;min-width:100px}.expense{font-size:28px;font-weight:850}.line{padding:12px 0;border-bottom:1px solid #edf0f3}.line:last-child{border-bottom:0}.toast{position:fixed;left:50%;bottom:82px;transform:translateX(-50%);background:#17202a;color:#fff;padding:10px 14px;border-radius:999px;display:none;z-index:100;max-width:90%;text-align:center}.photoBox{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.photoPreview{width:110px;height:90px;object-fit:cover;border-radius:16px;background:#edf1f5}.emptyPhoto{width:110px;height:90px;border-radius:16px;background:#edf1f5;display:flex;align-items:center;justify-content:center;color:#7b8794;font-size:12px;text-align:center}.reportBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.reportBtns button{flex:1;min-width:150px}.modal{position:fixed;inset:0;background:#0008;display:flex;align-items:center;justify-content:center;padding:20px;z-index:50}.modalBox{background:#fff;border-radius:20px;padding:18px;width:min(520px,100%);max-height:90vh;overflow:auto}.modalBox h3{margin:0 0 14px}.modalActions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}.typeIcon{font-size:20px;display:inline-block;width:30px}.recordActions{display:flex;gap:8px;margin-top:12px}.recordActions button{flex:1}.statusDot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 12px}.dotGreen{background:#22a447}.dotRed{background:#d92d20}.summary{background:#f8fafc;border:1px solid #edf0f3;border-radius:14px;padding:12px}.dangerText{color:#c62828}.inlineNote{font-size:12px;color:#667085;margin-top:4px}
+:root{--bg:#f2f4f8;--surface:#fff;--surface2:#f6f8fb;--text:#0f172a;--muted:#64748b;--line:#e6eaf0;--primary:#2f5bea;--primary2:#5b7cfa;--primarySoft:#e8eeff;--onPrimary:#fff;--green:#15803d;--greenSoft:#e5f6ea;--orange:#b45309;--orangeSoft:#fff3e0;--red:#c81e1e;--redSoft:#fdeaea;--shadow:0 1px 2px #0f172a0d,0 6px 20px #0f172a0f;--radius:22px;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0b1020;--surface:#151b2e;--surface2:#1c2338;--text:#e8ecf5;--muted:#94a0b8;--line:#263049;--primary:#5b7cfa;--primary2:#7c95ff;--primarySoft:#22305c;--green:#4ade80;--greenSoft:#12301f;--orange:#fbbf24;--orangeSoft:#36290d;--red:#f87171;--redSoft:#3a1616;--shadow:0 1px 2px #0006,0 8px 24px #0005;color-scheme:dark}}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+button{border:0;border-radius:16px;padding:13px 16px;background:var(--surface2);color:var(--text);font-weight:650;min-height:46px;cursor:pointer;transition:transform .12s ease,filter .12s ease,background .2s}
+button:active{transform:scale(.97);filter:brightness(.96)}
+button.primary{background:linear-gradient(135deg,var(--primary),var(--primary2));color:var(--onPrimary);box-shadow:0 6px 16px #2f5bea38}
+button.danger{background:var(--redSoft);color:var(--red)}
+.app{max-width:760px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(40px + env(safe-area-inset-bottom));animation:fadeIn .22s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.top{display:flex;align-items:center;margin:4px 0 18px;gap:12px;min-height:52px}
+.title{font-size:26px;font-weight:800;line-height:1.15;letter-spacing:-.02em}
+.sub{color:var(--muted)}
+.card{background:var(--surface);border-radius:var(--radius);padding:18px;margin:12px 0;box-shadow:var(--shadow);border:1px solid var(--line)}
+.vehicle{cursor:pointer;display:flex;gap:14px;align-items:center;position:relative;padding-right:36px}
+.vehicle::after{content:"›";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:28px;color:var(--muted);font-weight:300}
+.vehicle:active{transform:scale(.99)}
+.vehiclePhoto{width:78px;height:78px;object-fit:cover;border-radius:18px;background:var(--surface2);flex:0 0 78px}
+.vehicleInfo{min-width:0;flex:1}.vehicle h3{margin:0 0 3px;font-size:18px;font-weight:750;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.km{font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums}
+.status{margin-top:10px;font-weight:650;font-size:13.5px}
+.status span{display:inline-block;padding:5px 11px;border-radius:999px}
+.status .green{background:var(--greenSoft)}.status .orange{background:var(--orangeSoft)}.status .red{background:var(--redSoft)}
+.green{color:var(--green)}.orange{color:var(--orange)}.red{color:var(--red)}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.grid>.card{margin:0}
+.tile{display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:10px;text-align:left;min-height:92px;padding:14px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;font-weight:650}
+.tile .ico{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;background:var(--primarySoft)}
+.tile.primary{border:0}.tile.primary .ico{background:#ffffff2e}
+.section{margin:26px 4px 10px;font-size:13px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.small{font-size:13px}.muted{color:var(--muted)}
+.form{background:var(--surface);border-radius:var(--radius);padding:18px;margin:12px 0;box-shadow:var(--shadow);border:1px solid var(--line)}
+.form>.section:first-child{margin-top:2px}
+.field{margin:14px 0}.field label{display:block;font-size:13px;font-weight:650;color:var(--muted);margin-bottom:7px}
+.field input,.field select,.field textarea,select{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface2);outline:none;transition:border-color .15s,box-shadow .15s;min-height:48px}
+.field input:focus,.field select:focus,.field textarea:focus,select:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--primarySoft);background:var(--surface)}
+.field input[type=file]{padding:10px;min-height:auto}
+.field textarea{min-height:84px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:9px 14px;min-height:40px;border-radius:999px;background:var(--surface2);border:1.5px solid var(--line);font-weight:600}
+.chip.on{background:var(--primarySoft);color:var(--primary);border-color:var(--primary)}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}.toolbar button{flex:1;min-width:110px}
+.hidden{display:none}
+.bigkm{font-size:34px;font-weight:850;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.back{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);width:46px;min-width:46px;height:46px;padding:0;border-radius:15px;font-size:22px;color:var(--text);display:flex;align-items:center;justify-content:center}
+.expense{font-size:34px;font-weight:850;letter-spacing:-.02em;margin:4px 0 6px}
+.line{padding:13px 0;border-bottom:1px solid var(--line)}.line:last-child{border-bottom:0}
+.divider{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.toast{position:fixed;left:50%;bottom:calc(28px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--text);color:var(--bg);padding:12px 18px;border-radius:16px;display:none;z-index:100;max-width:90%;text-align:center;font-weight:600;box-shadow:0 10px 30px #0004;animation:fadeIn .2s ease}
+.photoBox{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.photoPreview{width:120px;height:96px;object-fit:cover;border-radius:18px;background:var(--surface2)}
+.emptyPhoto{border-radius:18px;background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:30px;text-align:center}
+div.emptyPhoto:not(.vehiclePhoto):not(.photoPreview){width:120px;height:96px;font-size:12px}
+.reportBtns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.reportBtns button{flex:1;min-width:150px}
+.modal{position:fixed;inset:0;background:#0f172a73;backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;z-index:50;animation:fade .18s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes up{from{transform:translateY(40px);opacity:.6}to{transform:none;opacity:1}}
+.modalBox{background:var(--surface);border-radius:26px 26px 0 0;padding:10px 20px calc(20px + env(safe-area-inset-bottom));width:min(560px,100%);max-height:90vh;overflow:auto;animation:up .22s ease;box-shadow:0 -10px 40px #0003}
+.modalGrip{width:42px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 14px}
+.modalBox h3{margin:0 0 10px;font-size:20px}.modalBox p{color:var(--muted);line-height:1.45}
+.modalActions{display:flex;gap:10px;margin-top:18px}.modalActions button{flex:1}
+.typeIcon{font-size:18px;display:inline-block;width:28px}
+.recordActions{display:flex;gap:8px;margin-top:14px}.recordActions button{flex:1;min-height:42px;padding:10px}
+.statusDot{width:12px;height:12px;border-radius:50%;display:inline-block;flex:0 0 12px}.dotGreen{background:var(--green)}.dotRed{background:var(--red)}
+.summary{background:var(--surface2);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:6px}
+.dangerText{color:var(--red)}.inlineNote{font-size:12.5px;color:var(--muted);margin-top:6px}
+.hero{background:linear-gradient(140deg,var(--primary),var(--primary2));color:#fff;border:0;box-shadow:0 12px 30px #2f5bea40}
+.hero .muted,.hero .sub{color:#ffffffc7}
+.hero .photoPreview,.hero .emptyPhoto{background:#ffffff26;color:#fff}
+.hero .toolbar{display:grid;grid-template-columns:1fr 1fr;gap:8px}.hero .toolbar button:first-child{grid-column:1/-1;background:#fff;color:var(--primary);font-size:16px;padding:13px}.hero .toolbar button{background:#ffffff26;color:#fff;min-width:0;padding:10px 6px;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hero .toolbar button.danger{background:#ffffff1a;color:#ffe1e1}
+.homeHead{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:6px 0 18px}
+.homeHead .title{font-size:32px}
+.addBtn{border-radius:16px;padding:12px 16px}
+.expGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+@media (max-width:420px){.expGrid{grid-template-columns:1fr 1fr}.expGrid .cOther{grid-column:1/-1}}
+.expBlock{background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:20px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.expIco{width:36px;height:36px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;background:var(--surface2)}
+.expLabel{font-weight:700;margin-top:6px}.expHint{font-size:12px;color:var(--muted)}.expVal{font-size:20px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+.bar{height:6px;border-radius:9px;background:var(--surface2);overflow:hidden;margin-top:6px}.bar span{display:block;height:100%;border-radius:9px;background:var(--primary)}
+.cMaint .bar span{background:#2f5bea}.cFuel .bar span{background:#f59e0b}.cOther .bar span{background:#10b981}
+.cMaint .expIco{background:#2f5bea22}.cFuel .expIco{background:#f59e0b26}.cOther .expIco{background:#10b98126}
+.stackBar{display:flex;height:10px;border-radius:9px;overflow:hidden;background:#ffffff33;margin-top:6px}.stackBar span{display:block;height:100%}
+.sMaint{background:#fff}.sFuel{background:#fcd34d}.sOther{background:#6ee7b7}
+.switchRow{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:6px 0}
+.switch{position:relative;width:52px;min-width:52px;height:32px;border-radius:99px;background:var(--line);padding:0;min-height:0;transition:background .2s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 3px #0003;transition:left .2s}
+.switch.on{background:var(--primary)}.switch.on::after{left:23px}
+.switch:disabled{opacity:.45}
+.notice{display:flex;gap:12px;align-items:center;background:var(--orangeSoft);border:1px solid transparent;color:var(--text)}
+.notice .grow{flex:1}.notice button{min-height:40px;padding:9px 14px}
+.empty{text-align:center;padding:28px 18px}.empty .big{font-size:44px;margin-bottom:8px}
 </style>
 </head>
 <body><div id="app"></div><div id="toast" class="toast"></div>
@@ -24,6 +119,7 @@ function save(){
   try{
     const snapshot={...db,vehicles:db.vehicles.map(v=>{const c={...v};delete c.photo;return c;})};
     localStorage.setItem(KEY,JSON.stringify(snapshot));
+    syncReminders();
     return true;
   }catch(e){
     toast(uiLang==='en'?'Could not save the data.':'No se han podido guardar los datos.');
@@ -44,10 +140,14 @@ function toast(s){let el=document.getElementById('toast');el.textContent=s;el.st
 function vehicle(id){return db.vehicles.find(v=>v.id===id)}
 hydratePhotos();
 migrateLegacy();
-function dateISO(){return new Date().toISOString().slice(0,10)}
+function localISO(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function dateISO(){return localISO(new Date())}
+function addMonthsISO(iso,months){const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso||''));const base=m?new Date(+m[1],+m[2]-1,+m[3]):new Date();const day=base.getDate();base.setDate(1);base.setMonth(base.getMonth()+Number(months||0));const last=new Date(base.getFullYear(),base.getMonth()+1,0).getDate();base.setDate(Math.min(day,last));return localISO(base)}
+function parseISO(iso){const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso||''));return m?new Date(+m[1],+m[2]-1,+m[3]):new Date(iso)}
+function showDate(iso){if(!iso)return '—';const d=parseISO(iso);return isNaN(d)?esc(iso):d.toLocaleDateString(uiLang==='en'?'en-GB':'es-ES')}
 function activityTime(v){let d=[];db.maintenance.filter(x=>x.vehicleId===v.id&&x.date).forEach(x=>d.push(Date.parse(x.date)||0));db.fuel.filter(x=>x.vehicleId===v.id&&x.date).forEach(x=>d.push(Date.parse(x.date)||0));return d.length?Math.max(...d):0}
 function kindIcon(v){return v.kind==='bike'?'🏍️':v.kind==='bicycle'?'🚲':'🚗'}
-function photoMarkup(v,cls='vehiclePhoto'){return v.photo?`<img class="${cls}" src="${v.photo}" alt="${esc(v.name)}">`:`<div class="${cls==='vehiclePhoto'?'vehiclePhoto ':'s'}emptyPhoto">${t('noPhoto')}</div>`}
+function photoMarkup(v,cls='vehiclePhoto'){return v.photo?`<img class="${cls}" src="${v.photo}" alt="${esc(v.name)}">`:`<div class="${cls} emptyPhoto">${kindIcon(v)}</div>`}
 function inDateRange(d,from,to){let x=String(d||'').slice(0,10);if(!x)return false;if(from&&x<from)return false;if(to&&x>to)return false;return true}
 function maintenanceCost(v,from=null,to=null){return db.maintenance.filter(m=>m.vehicleId===v.id&&inDateRange(m.date,from,to)).reduce((s,m)=>s+Number(m.total||0),0)}
 function fuelCost(v,from=null,to=null){return db.fuel.filter(f=>f.vehicleId===v.id&&inDateRange(f.date,from,to)).reduce((s,f)=>s+Number(f.total||0),0)}
@@ -57,50 +157,20 @@ function usageExpense(v,from=null,to=null){return maintenanceCost(v,from,to)+fue
 function kmSinceStart(v){return Math.max(0,Number(v.km||0)-Number(v.startKm||0))}
 function periodDistance(v,from,to){if(!from&&!to)return kmSinceStart(v);let pts=[];db.maintenance.filter(m=>m.vehicleId===v.id&&inDateRange(m.date,from,to)&&isFinite(Number(m.km))).forEach(m=>pts.push(Number(m.km)));db.fuel.filter(f=>f.vehicleId===v.id&&inDateRange(f.date,from,to)&&isFinite(Number(f.km))).forEach(f=>pts.push(Number(f.km)));return pts.length>1?Math.max(0,Math.max(...pts)-Math.min(...pts)):0}
 function costKm(v,from=null,to=null){let d=periodDistance(v,from,to),c=usageExpense(v,from,to);return d>0?c/d:null}
-function nextItems(v){return db.maintenance.filter(m=>m.vehicleId===v.id&&m.next).map(m=>{let n=m.next,remKm=n.km!=null?Number(n.km)-Number(v.km||0):Infinity,remDays=n.date?Math.ceil((new Date(n.date)-new Date())/86400000):Infinity;return {m,remKm,remDays,over:remKm<=0||remDays<=0}}).sort((a,b)=>Math.min(a.remKm,a.remDays*1000)-Math.min(b.remKm,b.remDays*1000))}
+function nextItems(v){return db.maintenance.filter(m=>m.vehicleId===v.id&&m.next).map(m=>{let n=m.next,remKm=n.km!=null?Number(n.km)-Number(v.km||0):Infinity,remDays=n.date?Math.ceil((parseISO(n.date)-parseISO(dateISO()))/86400000):Infinity;return {m,remKm,remDays,over:remKm<=0||remDays<=0}}).sort((a,b)=>Math.min(a.remKm,a.remDays*1000)-Math.min(b.remKm,b.remDays*1000))}
 function vehicleStatus(v){let x=nextItems(v)[0];if(!x)return `<span class="green">🟢 ${uiLang==='en'?'All good':'Todo al día'}</span>`;let label=x.m.types?.[0]||t('maintenance');if(x.over)return `<span class="red">🔴 ${esc(label)} ${uiLang==='en'?'due':'pendiente'}</span>`;return `<span class="orange">🟠 ${esc(label)} · ${x.remKm<Infinity?`${uiLang==='en'?'in':'En'} ${fmt(x.remKm)} km`:`${uiLang==='en'?'in':'En'} ${fmt(x.remDays)} ${uiLang==='en'?'days':'días'}`}</span>`}
 function navigate(next){window.__nav=window.__nav||[];window.__nav.push(screen);screen=next;render()}
 function goBack(){let nav=window.__nav||[];screen=nav.length?nav.pop():'home';render()}
-function header(title,back=true){return `<div class="top">${back?'<button class="back" onclick="goBack()">← '+(uiLang==='en'?'Back':'Volver')+'</button>':'<span style="min-width:100px"></span>'}<div class="title" style="flex:1">${title}</div></div>`}
-
-function getMaintenanceScheduleFromForm(){
-  const mode=(document.getElementById('maintenanceScheduleMode')||{}).value||'none';
-  const kmEl=document.getElementById('maintenanceScheduleKm');
-  const moEl=document.getElementById('maintenanceScheduleMonths');
-  const km=kmEl&&kmEl.value!==''?Number(kmEl.value):null;
-  const months=moEl&&moEl.value!==''?Number(moEl.value):null;
-  if(mode==='km' && (!km || km<=0)) throw new Error('Introduce los kilómetros del intervalo.');
-  if(mode==='months' && (!months || months<=0)) throw new Error('Introduce los meses del intervalo.');
-  if(mode==='both' && ((!km||km<=0)||(!months||months<=0))) throw new Error('Introduce kilómetros y meses del intervalo.');
-  return {mode,km,months};
-}
-function maintenanceGroup(item,currentKm,today){
-  const s=item.schedule||{};
-  const dueKm=s.nextKm!=null?s.nextKm:null;
-  const dueDate=s.nextDate||null;
-  if((dueKm!=null && currentKm>=dueKm) || (dueDate && today>=dueDate)) return 'pending';
-  const nearKm=dueKm!=null && dueKm-currentKm<=1000;
-  const nearDate=dueDate && ((new Date(dueDate)-new Date(today))/86400000)<=30;
-  return (nearKm||nearDate)?'upcoming':'later';
-}
+function header(title,back=true){return `<div class="top">${back?`<button class="back" onclick="goBack()" aria-label="${uiLang==='en'?'Back':'Volver'}">‹</button>`:''}<div class="title" style="flex:1">${title}</div></div>`}
+function tile(icon,label,onclick,cls=''){return `<button class="tile ${cls}" onclick="${onclick}"><span class="ico">${icon}</span><span>${label}</span></button>`}
 
 
-function renderMaintenanceGroups(items){
-  const groups={pending:[],upcoming:[],later:[]};
-  items.forEach(x=>{
-    const g=maintenanceGroup(x,x.currentKm||0,new Date().toISOString().slice(0,10));
-    groups[g].push(x);
-  });
-  const block=(title,cls,arr)=>`<section class="maintenanceGroup ${cls}"><h3>${title}</h3>${arr.length?arr.map(x=>`<div class="maintenanceRow">${x.name||'Mantenimiento'} ${x.summary||''}</div>`).join(''):`<div class="empty">Sin elementos</div>`}</section>`;
-  return block('🔴 Pendientes','pending',groups.pending)
-    +block('🟠 Próximos','upcoming',groups.upcoming)
-    +block('🟢 Más adelante','later',groups.later);
-}
+
 
 function render(){let a=document.getElementById('app');if(screen==='home')a.innerHTML=homeHTML();else if(screen==='vehicle')a.innerHTML=vehicleHTML();else if(screen==='add')a.innerHTML=addHTML();else if(screen==='editVehicle')a.innerHTML=editVehicleHTML();else if(screen==='record')a.innerHTML=recordHTML();else if(screen==='history')a.innerHTML=historyHTML();else if(screen==='maintenance')a.innerHTML=maintenanceHTML();else if(screen==='expenses')a.innerHTML=expensesHTML();else if(screen==='fuel')a.innerHTML=fuelHTML();else if(screen==='fuelForm')a.innerHTML=fuelFormHTML();else if(screen==='additional')a.innerHTML=additionalHTML();else if(screen==='obligations')a.innerHTML=obligationsHTML();else if(screen==='settings')a.innerHTML=settingsHTML();document.documentElement.lang=uiLang}
-function homeHTML(){let arr=[...db.vehicles].sort((a,b)=>activityTime(b)-activityTime(a)||String(a.name||'').localeCompare(String(b.name||''),'es'));return `<div class="app"><div class="top"><div style="flex:1"><div class="title">${t('appName')}</div><div class="sub">${t('homeSub')}</div></div><button class="primary" onclick="navigate('add')">＋ ${t('addVehicle')}</button></div>${arr.length?arr.map(v=>`<div class="card vehicle" onclick="selected='${v.id}';navigate('vehicle')">${photoMarkup(v)}<div class="vehicleInfo"><h3><span class="typeIcon">${kindIcon(v)}</span>${esc(v.name)}</h3><div class="km">${fmt(v.km)} km</div><div class="status">${vehicleStatus(v)}</div></div></div>`).join(''):`<div class="card"><b>${t('noVehicles')}</b><div class="sub" style="margin-top:6px">${t('addFirst')}</div></div>`}<div class="section">${t('quickAccess')}</div><div class="grid"><button onclick="navigate('maintenance')">🔧 ${t('maintenance')}</button><button onclick="expenseVehicle='all';expenseReturn='home';navigate('expenses')">💰 ${t('expenses')}</button><button onclick="backupData()">☁️ ${t('backup')}</button><button onclick="restoreData()">📥 ${t('restore')}</button></div><div class="section">⚙️ ${t('settings')}</div><div class="reportBtns"><button onclick="navigate('settings')">⚙️ ${t('settings')}</button></div></div>`}
-function vehicleHTML(){let v=vehicle(selected),tot=totalExpense(v),ck=costKm(v);return `<div class="app">${header(esc(v.name))}<div class="card"><div class="photoBox">${photoMarkup(v,'photoPreview')}<div><div class="bigkm">${fmt(v.km)} km</div><div class="small muted" style="margin-top:5px">${t('totalSpend')}: ${eur(tot)}</div><div class="small muted" style="margin-top:4px">${t('costKm')}: ${ck!=null?eur(ck)+' / km':t('noDistance')}</div><div class="toolbar" style="margin-top:12px"><button onclick="updateKm()">📏 ${t('updateKm')}</button><button onclick="editVehicle()">✏️ ${t('edit')}</button><button class="danger" onclick="deleteVehicle()">🗑️ ${t('delete')}</button></div></div></div></div><div class="section">${t('upcoming')}</div>${upcomingHTML(v)}<div class="section">${t('actions')}</div><div class="grid"><button class="primary" onclick="editMaintenanceId=null;recTypes=[];breakdownOpen=false;navigate('record')">🔧 ${t('maintenance')}</button><button onclick="quickFuel()">⛽ ${t('quickFuel')}</button><button onclick="navigate('fuel')">📊 ${t('fuel')}</button><button onclick="navigate('history')">📋 ${t('history')}</button><button onclick="openVehicleExpenses('${v.id}')">💰 ${t('expenses')}</button><button onclick="navigate('additional')">📁 ${t('additional')}</button><button onclick="navigate('obligations')">🧾 ${t('obligations')}</button></div><div class="section">${t('allCosts')}</div><div class="card"><div class="row"><span>🔧 ${t('costMaintenance')}</span><b>${eur(maintenanceCost(v))}</b></div><div class="row" style="margin-top:10px"><span>⛽ ${t('costFuel')}</span><b>${eur(fuelCost(v))}</b></div><div class="row" style="margin-top:10px"><span>🧾 ${t('costObligations')}</span><b>${eur(obligationsCost(v))}</b></div><div class="row" style="margin-top:14px;padding-top:12px;border-top:1px solid #edf0f3"><b>${t('totalSpend').toUpperCase()}</b><b>${eur(tot)}</b></div></div><div class="section">${t('excel')}</div><div class="reportBtns"><button onclick="exportExcelForVehicle('${v.id}')">📊 ${t('exportExcel')}</button></div></div>`}
-function upcomingHTML(v){let arr=nextItems(v).slice(0,5);return arr.length?arr.map(x=>`<div class="card"><div class="row"><b>${esc((x.m.types||[]).map(z=>z==='Otros'&&x.m.otherText?`Otros — ${x.m.otherText}`:z).join(' + '))}</b><span class="${x.over?'red':'orange'}">${x.over?'🔴 Pendiente':x.remKm<Infinity?'🟠 '+fmt(x.remKm)+' km':'🟠 '+fmt(x.remDays)+' días'}</span></div></div>`).join(''):`<div class="card muted">${uiLang==='en'?'No scheduled maintenance.':'No hay mantenimientos programados.'}</div>`}
+function homeHTML(){let arr=[...db.vehicles].sort((a,b)=>activityTime(b)-activityTime(a)||String(a.name||'').localeCompare(String(b.name||''),'es'));return `<div class="app"><div class="homeHead"><div><div class="title">${t('appName')}</div><div class="sub">${t('homeSub')}</div></div><button class="primary addBtn" onclick="navigate('add')">＋ ${uiLang==='en'?'Add':'Añadir'}</button></div>${backupNoticeHTML()}${arr.length?arr.map(v=>`<div class="card vehicle" onclick="selected='${v.id}';navigate('vehicle')">${photoMarkup(v)}<div class="vehicleInfo"><h3>${esc(v.name)}</h3><div class="km">${kindIcon(v)} ${fmt(v.km)} km</div><div class="status">${vehicleStatus(v)}</div></div></div>`).join(''):`<div class="card empty"><div class="big">🚗</div><b>${t('noVehicles')}</b><div class="sub" style="margin:6px 0 14px">${t('addFirst')}</div><button class="primary" onclick="navigate('add')">＋ ${t('addVehicle')}</button></div>`}<div class="section">${t('quickAccess')}</div><div class="grid">${tile('🔧',t('maintenance'),"navigate('maintenance')")}${tile('💰',t('expenses'),"expenseVehicle='all';expenseReturn='home';navigate('expenses')")}${tile('☁️',t('backup'),'backupData()')}${tile('📥',t('restore'),'restoreData()')}${tile('⚙️',t('settings'),"navigate('settings')")}</div></div>`}
+function vehicleHTML(){let v=vehicle(selected);if(!v){screen='home';return homeHTML()}let tot=totalExpense(v),ck=costKm(v);return `<div class="app">${header(esc(v.name))}<div class="card hero"><div class="photoBox">${photoMarkup(v,'photoPreview')}<div style="flex:1;min-width:150px"><div class="small muted">${kindIcon(v)} ${esc([v.brand,v.model,v.year].filter(Boolean).join(' · '))}</div><div class="bigkm">${fmt(v.km)} km</div><div class="small muted" style="margin-top:4px">${t('totalSpend')}: <b>${eur(tot)}</b> · ${t('costKm')}: <b>${ck!=null?eur(ck):'—'}</b></div></div></div><div class="toolbar" style="margin-top:16px"><button onclick="updateKm()">📏 ${t('updateKm')}</button><button onclick="editVehicle()">✏️ ${t('edit')}</button><button class="danger" onclick="deleteVehicle()">🗑️ ${t('delete')}</button></div></div><div class="section">${t('upcoming')}</div>${upcomingHTML(v)}<div class="section">${t('actions')}</div><div class="grid">${tile('🔧',t('maintenance'),"editMaintenanceId=null;completeScheduledId=null;recTypes=[];breakdownOpen=false;navigate('record')",'primary')}${tile('⛽',t('quickFuel'),'quickFuel()')}${tile('📊',t('fuel'),"navigate('fuel')")}${tile('📋',t('history'),"navigate('history')")}${tile('💰',t('expenses'),`openVehicleExpenses('${v.id}')`)}${tile('📁',t('additional'),"navigate('additional')")}${tile('🧾',t('obligations'),"navigate('obligations')")}${tile('📗',t('exportExcel'),`exportExcelForVehicle('${v.id}')`)}</div><div class="section">${t('allCosts')}</div><div class="card"><div class="row"><span>🔧 ${t('costMaintenance')}</span><b>${eur(maintenanceCost(v))}</b></div><div class="row" style="margin-top:10px"><span>⛽ ${t('costFuel')}</span><b>${eur(fuelCost(v))}</b></div><div class="row" style="margin-top:10px"><span>🧾 ${t('costObligations')}</span><b>${eur(obligationsCost(v))}</b></div><div class="row divider"><b>${t('totalSpend').toUpperCase()}</b><b>${eur(tot)}</b></div></div></div>`}
+function upcomingHTML(v){let arr=nextItems(v).slice(0,5);return arr.length?arr.map(x=>`<div class="card"><div class="row"><b>${esc((x.m.types||[]).map(z=>z==='Otros'&&x.m.otherText?`Otros — ${x.m.otherText}`:z).join(' + '))}</b><span class="${x.over?'red':'orange'}" style="white-space:nowrap">${x.over?'🔴 '+(uiLang==='en'?'Due':'Pendiente'):x.remKm<Infinity?'🟠 '+fmt(x.remKm)+' km':'🟠 '+fmt(x.remDays)+' días'}</span></div></div>`).join(''):`<div class="card muted">✨ ${uiLang==='en'?'No scheduled maintenance.':'No hay mantenimientos programados.'}</div>`}
 function addHTML(){return `<div class="app">${header(t('addVehicle'))}<div class="form"><div class="section">${uiLang==='en'?'Vehicle type':'Tipo de vehículo'}</div><div class="chips" style="margin-top:10px"><button class="chip ${addKind==='car'?'on':''}" onclick="addKind='car';render()">🚗 ${uiLang==='en'?'Car':'Coche'}</button><button class="chip ${addKind==='bike'?'on':''}" onclick="addKind='bike';render()">🏍️ ${uiLang==='en'?'Motorcycle':'Moto'}</button><button class="chip ${addKind==='bicycle'?'on':''}" onclick="addKind='bicycle';render()">🚲 ${uiLang==='en'?'Bicycle':'Bicicleta'}</button></div><div class="field"><label>${t('name')}</label><input id="aname"></div><div class="field"><label>${t('brand')}</label><input id="abrand"></div><div class="field"><label>${t('model')}</label><input id="amodel"></div><div class="field"><label>${t('year')}</label><input id="ayear" type="number"></div><div class="field"><label>${uiLang==='en'?'Current kilometres':'Kilómetros actuales'}</label><input id="akm" type="number" step="1" inputmode="numeric"></div><div class="field"><label>${t('photo')}</label><div class="photoBox"><div id="addPhotoPreview" class="emptyPhoto">📷<br>${t('noPhoto')}</div><div><input id="photoInput" type="file" accept="image/*" onchange="readPhoto(this,'add')"></div></div></div><button class="primary" style="width:100%" onclick="createVehicle()">${t('saveVehicle')}</button></div></div>`}
 function readPhoto(input,mode){
   let f=input.files&&input.files[0];
@@ -158,7 +228,30 @@ function removeVehiclePhoto(){
 function editVehicle(){let v=vehicle(selected);let p=v?.photo||'';if(!p&&typeof Android!=='undefined'){try{p=Android.getPhoto(v.id)||''}catch(e){}}window.editVehiclePhoto=p;window.__nav.push('vehicle');screen='editVehicle';render()}
 function saveEditedVehicle(){let v=vehicle(selected);v.name=document.getElementById('evName').value.trim()||v.name;v.brand=document.getElementById('evBrand').value.trim();v.model=document.getElementById('evModel').value.trim();v.year=document.getElementById('evYear').value;let p=window.editVehiclePhoto||'';if(typeof Android!=='undefined'){if(p)Android.savePhoto(v.id,p);else Android.deletePhoto(v.id);}v.photo=p;save();goBack();toast(t('vehicleSaved'))}
 function deleteVehicle(){let v=vehicle(selected);confirmApp(uiLang==='en'?'Delete '+v.name+'?':'¿Eliminar '+v.name+'?',uiLang==='en'?'All its maintenance, fuel, expenses and vehicle data will also be deleted.':'También se eliminarán sus mantenimientos, repostajes, gastos y datos del vehículo.',()=>{let id=v.id;db.vehicles=db.vehicles.filter(x=>x.id!==id);db.maintenance=db.maintenance.filter(x=>x.vehicleId!==id);db.fuel=db.fuel.filter(x=>x.vehicleId!==id);db.obligations=db.obligations.filter(x=>x.vehicleId!==id);save();window.__nav=[];selected=null;screen='home';render();toast(uiLang==='en'?'Vehicle deleted':'Vehículo eliminado')})}
-function updateKm(){let v=vehicle(selected);openModal(uiLang==='en'?'Update kilometres':'Actualizar kilómetros',`<div class="field"><label>${uiLang==='en'?'Current kilometres':'Kilómetros actuales'}</label><input id="modalKm" type="number" step="1" value="${v.km}"></div>`,`<button onclick="closeModal()">${t('cancel')}</button><button class="primary" onclick="let n=Number(document.getElementById('modalKm').value);if(!isFinite(n)||n<0){toast('${t('checkData')}');return}v=vehicle(selected);v.km=n;save();closeModal();render();toast('${uiLang==='en'?'Kilometres updated':'Kilómetros actualizados'}')}`)}
+function updateKm(){
+  let v=vehicle(selected);if(!v)return toast(t('noVehicle'));
+  openModal(uiLang==='en'?'Update kilometres':'Actualizar kilómetros',
+    `<div class="field"><label>${uiLang==='en'?'Current kilometres':'Kilómetros actuales'}</label><input id="modalKm" type="number" step="1" min="0" inputmode="numeric" value="${esc(v.km)}"></div><div class="inlineNote">${uiLang==='en'?'Last recorded':'Último registrado'}: ${fmt(v.km)} km</div>`,
+    `<button onclick="closeModal()">${t('cancel')}</button><button class="primary" id="modalKmOk">${t('save')}</button>`);
+  const input=document.getElementById('modalKm');
+  document.getElementById('modalKmOk').onclick=confirmKm;
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')confirmKm()});
+  setTimeout(()=>{input.focus();input.select()},50);
+}
+function confirmKm(){
+  const v=vehicle(selected),el=document.getElementById('modalKm');if(!v||!el)return closeModal();
+  const raw=el.value.trim(),n=Number(raw);
+  if(raw===''||!isFinite(n)||n<0)return toast(t('checkData'));
+  const apply=()=>{v.km=Math.round(n);save();closeModal();render();toast(uiLang==='en'?'Kilometres updated':'Kilómetros actualizados')};
+  if(n<Number(v.km||0)){
+    closeModal();
+    confirmApp(uiLang==='en'?'Lower kilometres?':'¿Bajar los kilómetros?',
+      uiLang==='en'?`You entered ${fmt(n)} km, less than the current ${fmt(v.km)} km. Save anyway?`:`Has puesto ${fmt(n)} km, menos que los ${fmt(v.km)} km actuales. ¿Guardar igualmente?`,
+      ()=>{v.km=Math.round(n);save();render();toast(uiLang==='en'?'Kilometres updated':'Kilómetros actualizados')},t('save'));
+    return;
+  }
+  apply();
+}
 function scheduleFieldsHTML(mode,km='',months=''){
   if(mode==='km') return `<div class="grid"><div class="field"><label>${t('intervalKm')}</label><input id="rintervalKm" type="number" min="1" step="1" inputmode="numeric" value="${esc(km)}" placeholder="${uiLang==='en'?'Example: 10000':'Ej.: 10000'}"></div></div>`;
   if(mode==='months') return `<div class="grid"><div class="field"><label>${t('intervalMonths')}</label><input id="rintervalMonths" type="number" min="1" step="1" inputmode="numeric" value="${esc(months)}" placeholder="${uiLang==='en'?'Example: 12':'Ej.: 12'}"></div></div>`;
@@ -248,7 +341,7 @@ function saveRecord(){
     let im=oldNext.date?Math.max(1,Math.round((new Date(oldNext.date)-new Date(old.date))/(30.44*86400000))):null;
     const next={
       km:ik!=null?km+ik:null,
-      date:im!=null?(()=>{let d=new Date(date);d.setMonth(d.getMonth()+im);return d.toISOString().slice(0,10)})():null
+      date:im!=null?addMonthsISO(date,im):null
     };
 
     db.maintenance.push({
@@ -280,7 +373,7 @@ function saveRecord(){
     if((rep==='months'||rep==='either')&&im<=0)return toast(t('monthsInterval'));
     next={
       km:(rep==='km'||rep==='either')?km+ik:null,
-      date:(rep==='months'||rep==='either')?(()=>{let d=new Date(date);d.setMonth(d.getMonth()+im);return d.toISOString().slice(0,10)})():null
+      date:(rep==='months'||rep==='either')?addMonthsISO(date,im):null
     };
   }
 
@@ -312,7 +405,7 @@ function saveRecord(){
 }
 function editMaintenance(id){editMaintenanceId=id;recTypes=[];breakdownOpen=false;window.__nav.push('history');screen='record';render()}
 function removeMaintenance(id){confirmApp(uiLang==='en'?'Delete this maintenance?':'¿Eliminar este mantenimiento?',uiLang==='en'?'This record will be permanently removed.':'Este registro se eliminará de forma permanente.',()=>{db.maintenance=db.maintenance.filter(x=>x.id!==id);save();render();toast(uiLang==='en'?'Maintenance deleted':'Mantenimiento eliminado')})}
-function historyHTML(){let v=vehicle(selected),arr=db.maintenance.filter(m=>m.vehicleId===v.id).sort((a,b)=>String(b.date).localeCompare(String(a.date)));if(filter!=='all')arr=arr.filter(m=>(m.types||[]).join(' ').toLowerCase().includes(filter));return `<div class="app">${header(t('history'))}<div class="reportBtns"><button onclick="exportExcelForVehicle('${selected}')">📊 ${t('exportExcel')}</button></div>${arr.length?arr.map(m=>`<div class="card"><div class="row"><b>${new Date(m.date).toLocaleDateString(uiLang==='en'?'en-US':'es-ES')}</b><span>${fmt(m.km)} km</span></div><div style="margin-top:9px">${esc((m.types||[]).map(x=>x==='Otros'&&m.otherText?`Otros — ${m.otherText}`:x).join(' + '))}</div><div style="margin-top:7px;font-weight:750">${eur(m.total)}</div>${m.breakdown?.length?`<div class="small muted" style="margin-top:6px">${m.breakdown.map(b=>esc(b.name)+' '+eur(b.price)).join(' · ')}</div>`:''}${m.next?`<div class="inlineNote">🔁 ${uiLang==='en'?'Next':'Próximo'}: ${m.next.km!=null?fmt(m.next.km)+' km':''}${m.next.km!=null&&m.next.date?' / ':''}${m.next.date||''}</div>`:''}${m.notes?`<div class="sub small" style="margin-top:7px">${esc(m.notes)}</div>`:''}<div class="recordActions"><button onclick="editMaintenance('${m.id}')">✏️ ${t('edit')}</button><button class="danger" onclick="removeMaintenance('${m.id}')">🗑️ ${t('delete')}</button></div></div>`).join(''):`<div class="card muted">${t('noRecords')}</div>`}</div>`}
+function historyHTML(){let v=vehicle(selected),arr=db.maintenance.filter(m=>m.vehicleId===v.id).sort((a,b)=>String(b.date).localeCompare(String(a.date)));if(filter!=='all')arr=arr.filter(m=>(m.types||[]).join(' ').toLowerCase().includes(filter));return `<div class="app">${header(t('history'))}<div class="reportBtns"><button onclick="exportExcelForVehicle('${selected}')">📊 ${t('exportExcel')}</button></div>${arr.length?arr.map(m=>`<div class="card"><div class="row"><b>${showDate(m.date)}</b><span>${fmt(m.km)} km</span></div><div style="margin-top:9px">${esc((m.types||[]).map(x=>x==='Otros'&&m.otherText?`Otros — ${m.otherText}`:x).join(' + '))}</div><div style="margin-top:7px;font-weight:750">${eur(m.total)}</div>${m.breakdown?.length?`<div class="small muted" style="margin-top:6px">${m.breakdown.map(b=>esc(b.name)+' '+eur(b.price)).join(' · ')}</div>`:''}${m.next?`<div class="inlineNote">🔁 ${uiLang==='en'?'Next':'Próximo'}: ${m.next.km!=null?fmt(m.next.km)+' km':''}${m.next.km!=null&&m.next.date?' / ':''}${m.next.date?showDate(m.next.date):''}</div>`:''}${m.notes?`<div class="sub small" style="margin-top:7px">${esc(m.notes)}</div>`:''}<div class="recordActions"><button onclick="editMaintenance('${m.id}')">✏️ ${t('edit')}</button><button class="danger" onclick="removeMaintenance('${m.id}')">🗑️ ${t('delete')}</button></div></div>`).join(''):`<div class="card muted">${t('noRecords')}</div>`}</div>`}
 function completeScheduledMaintenance(id){
   const m=db.maintenance.find(x=>x.id===id);
   if(!m)return toast(t('notFound'));
@@ -340,11 +433,11 @@ function deleteMaintenanceSchedule(id){
 }
 function maintenanceHTML(){
   const groups={pending:[],upcoming:[],later:[]};
-  const today=new Date(); today.setHours(0,0,0,0);
+  const today=parseISO(dateISO());
   db.maintenance.filter(m=>m.next).forEach(m=>{
     const v=vehicle(m.vehicleId); if(!v)return;
     const kmRem=m.next.km!=null?Number(m.next.km)-Number(v.km||0):null;
-    const dateRem=m.next.date?Math.ceil((new Date(m.next.date+'T00:00:00')-today)/86400000):null;
+    const dateRem=m.next.date?Math.ceil((parseISO(m.next.date)-today)/86400000):null;
     let group='later';
     if((kmRem!=null&&kmRem<=0)||(dateRem!=null&&dateRem<=0)) group='pending';
     else if((kmRem!=null&&kmRem<=1000)||(dateRem!=null&&dateRem<=30)) group='upcoming';
@@ -357,7 +450,7 @@ function maintenanceHTML(){
     return `<div class="section">${titles[key]}</div>${arr.length?arr.map(x=>{
       const label=(x.m.types||[]).map(ti=>ti==='Otros'&&x.m.otherText?`Otros — ${x.m.otherText}`:ti).join(' + ');
       let detail=x.kmRem!=null?fmt(x.kmRem)+' km':(x.dateRem!=null?x.dateRem+' días':'');
-      return `<div class="card" onclick="selected='${x.v.id}';window.__nav.push('maintenance');screen='record';recTypes=[];render()">
+      return `<div class="card" onclick="selected='${x.v.id}';editMaintenanceId=null;completeScheduledId=null;breakdownOpen=false;recTypes=[];window.__nav.push('maintenance');screen='record';render()">
         <b>${kindIcon(x.v)} ${esc(x.v.name)}</b>
         <div class="small muted">${fmt(x.v.km)} km</div>
         <div style="margin-top:7px">${esc(label)}</div>
@@ -377,29 +470,189 @@ function updateFuelPreview(){let l=Number(document.getElementById('fliters')?.va
 function saveFuel(){let v=vehicle(selected),date=document.getElementById('fdate').value,km=Number(document.getElementById('fkm').value),liters=Number(document.getElementById('fliters').value),total=Number(document.getElementById('ftotal').value);if(!date||!isFinite(km)||km<0||!isFinite(liters)||liters<=0||!isFinite(total)||total<0)return toast(t('checkData'));let f=editFuelId?db.fuel.find(x=>x.id===editFuelId):null,price=total/liters;if(f)Object.assign(f,{date,km,liters,total,price});else db.fuel.push({id:uid(),vehicleId:v.id,date,km,liters,total,price});if(km>v.km)v.km=km;save();editFuelId=null;screen='fuel';render();toast(t('fuelSaved'))}
 function editFuel(id){editFuelId=id;navigate('fuelForm')}
 function removeFuel(id){confirmApp(uiLang==='en'?'Delete this refuel?':'¿Eliminar este repostaje?',uiLang==='en'?'This will recalculate fuel statistics.':'Se recalcularán las estadísticas de combustible.',()=>{db.fuel=db.fuel.filter(x=>x.id!==id);save();render();toast(t('deleteFuel'))})}
-function fuelHTML(){let v=vehicle(selected),arr=db.fuel.filter(f=>f.vehicleId===v.id).sort((a,b)=>Number(b.km)-Number(a.km)),liters=arr.reduce((s,f)=>s+Number(f.liters||0),0),cost=arr.reduce((s,f)=>s+Number(f.total||0),0),cons=[];for(let i=1;i<arr.length;i++){let d=Number(arr[i-1].km)-Number(arr[i].km);if(d>0)cons.push(Number(arr[i-1].liters||0)/d*100)}let avg=cons.length?cons.reduce((a,b)=>a+b,0)/cons.length:null;return `<div class="app">${header(t('fuel'))}<div class="card"><div class="row"><b>${esc(v.name)}</b><span>${fmt(v.km)} km</span></div><button class="primary" style="width:100%;margin-top:12px" onclick="quickFuel()">＋ ${t('newFuel')}</button></div><div class="grid"><div class="card"><div class="small muted">${t('liters')}</div><b>${liters.toFixed(2)} L</b></div><div class="card"><div class="small muted">${t('expenses')}</div><b>${eur(cost)}</b></div><div class="card"><div class="small muted">${uiLang==='en'?'Average consumption':'Consumo medio'}</div><b>${avg!=null?avg.toFixed(2)+' L/100 km':'—'}</b></div><div class="card"><div class="small muted">${t('costKm')}</div><b>${kmSinceStart(v)>0?eur(cost/kmSinceStart(v)):'—'}</b></div></div><div class="section">${uiLang==='en'?'Refuel history':'Historial de repostajes'}</div>${arr.length?arr.map(f=>`<div class="card"><div class="row"><b>${new Date(f.date).toLocaleDateString(uiLang==='en'?'en-US':'es-ES')}</b><span>${fmt(f.km)} km</span></div><div style="margin-top:7px">${Number(f.liters).toFixed(2)} L · ${eur(f.price)}/L</div><div style="margin-top:6px;font-weight:750">${eur(f.total)}</div><div class="recordActions"><button onclick="editFuel('${f.id}')">✏️ ${t('edit')}</button><button class="danger" onclick="removeFuel('${f.id}')">🗑️ ${t('delete')}</button></div></div>`).join(''):`<div class="card muted">${t('noRecords')}</div>`}</div>`}
-function additionalHTML(){let v=vehicle(selected),a=v.additional||{};return `<div class="app">${header(t('additional'))}<div class="card"><b>${esc(v.name)}</b><div class="small muted" style="margin-top:5px">${t('additionalInfo')}</div></div><div class="form"><div class="section">🛞 ${t('tyres')}</div><div class="field"><label>${t('frontTyres')}</label><input id="tyreFront" value="${esc(a.tyreFront||'')}" placeholder="${t('tyreNote')}"></div><div class="field"><label>${t('rearTyres')}</label><input id="tyreRear" value="${esc(a.tyreRear||'')}" placeholder="${t('tyreNote')}"></div></div><div class="form"><div class="section">🔋 ${t('battery')}</div><div class="field"><label>${t('batteryType')}</label><input id="batType" value="${esc(a.batteryType||'')}"></div><div class="field"><label>${t('batterySize')}</label><input id="batSize" value="${esc(a.batterySize||'')}" placeholder="95 Ah AGM"></div></div><div class="form"><div class="section">🛡️ ${t('insurance')}</div><div class="small muted">${t('insuranceNote')}</div><div class="field"><label>${t('company')}</label><input id="ins" value="${esc(a.insurance||'')}"></div><div class="field"><label>${t('policy')}</label><input id="inspol" value="${esc(a.insurancePolicy||'')}"></div><div class="field"><label>${t('start')}</label><input id="insstart" type="date" value="${esc(a.insuranceStart||'')}"></div><div class="field"><label>${t('end')}</label><input id="insend" type="date" value="${esc(a.insuranceEnd||'')}"></div></div><button class="primary" style="width:100%" onclick="saveAdditional()">${t('saveChanges')}</button></div>`}
-function saveAdditional(){let v=vehicle(selected);v.additional={batteryType:document.getElementById('batType').value.trim(),batterySize:document.getElementById('batSize').value.trim(),tyreFront:document.getElementById('tyreFront').value.trim(),tyreRear:document.getElementById('tyreRear').value.trim(),insurance:document.getElementById('ins').value.trim(),insurancePolicy:document.getElementById('inspol').value.trim(),insuranceStart:document.getElementById('insstart').value,insuranceEnd:document.getElementById('insend').value};save();goBack();toast(t('changesSaved'))}
-function obligationsHTML(){let v=vehicle(selected),arr=db.obligations.filter(o=>o.vehicleId===v.id).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));return `<div class="app">${header(t('obligations'))}<div class="card"><b>${esc(v.name)}</b><div class="small muted" style="margin-top:5px">${uiLang==='en'?'Insurance, tax, ITV, fines and other obligations.':'Seguro, viñeta, ITV, multas y otras obligaciones.'}</div></div><div class="reportBtns"><button class="primary" onclick="editObligationId=null;openObligationModal()">＋ ${t('newObligation')}</button></div>${arr.length?arr.map(o=>`<div class="card"><div class="row"><div><b>${esc(o.type)}</b><div class="small muted">${new Date(o.date).toLocaleDateString(uiLang==='en'?'en-US':'es-ES')}</div></div><b>${o.cost!=null&&o.cost!==''?eur(o.cost):'—'}</b></div>${o.type==='ITV'?`<div style="margin-top:8px;font-weight:800">${o.status==='desfavorable'?'🔴 '+t('unfavorable'):'🟢 '+t('favorable')}</div>${o.status==='desfavorable'&&o.reason?`<div class="small" style="margin-top:8px"><b>${t('reason')}:</b> ${esc(o.reason)}</div>`:''}`:''}${o.notes?`<div class="small" style="margin-top:8px">${esc(o.notes)}</div>`:''}<div class="recordActions"><button onclick="editObligation('${o.id}')">✏️ ${t('edit')}</button><button class="danger" onclick="removeObligation('${o.id}')">🗑️ ${t('delete')}</button></div></div>`).join(''):`<div class="card muted">${t('noRecords')}</div>`}</div>`}
+function fuelHTML(){let v=vehicle(selected),arr=db.fuel.filter(f=>f.vehicleId===v.id).sort((a,b)=>Number(b.km)-Number(a.km)),liters=arr.reduce((s,f)=>s+Number(f.liters||0),0),cost=arr.reduce((s,f)=>s+Number(f.total||0),0),cons=[];for(let i=1;i<arr.length;i++){let d=Number(arr[i-1].km)-Number(arr[i].km);if(d>0)cons.push(Number(arr[i-1].liters||0)/d*100)}let avg=cons.length?cons.reduce((a,b)=>a+b,0)/cons.length:null;return `<div class="app">${header(t('fuel'))}<div class="card"><div class="row"><b>${esc(v.name)}</b><span>${fmt(v.km)} km</span></div><button class="primary" style="width:100%;margin-top:12px" onclick="quickFuel()">＋ ${t('newFuel')}</button></div><div class="grid"><div class="card"><div class="small muted">${t('liters')}</div><b>${liters.toFixed(2)} L</b></div><div class="card"><div class="small muted">${t('expenses')}</div><b>${eur(cost)}</b></div><div class="card"><div class="small muted">${uiLang==='en'?'Average consumption':'Consumo medio'}</div><b>${avg!=null?avg.toFixed(2)+' L/100 km':'—'}</b></div><div class="card"><div class="small muted">${t('costKm')}</div><b>${kmSinceStart(v)>0?eur(cost/kmSinceStart(v)):'—'}</b></div></div><div class="section">${uiLang==='en'?'Refuel history':'Historial de repostajes'}</div>${arr.length?arr.map(f=>`<div class="card"><div class="row"><b>${showDate(f.date)}</b><span>${fmt(f.km)} km</span></div><div style="margin-top:7px">${Number(f.liters).toFixed(2)} L · ${eur(f.price)}/L</div><div style="margin-top:6px;font-weight:750">${eur(f.total)}</div><div class="recordActions"><button onclick="editFuel('${f.id}')">✏️ ${t('edit')}</button><button class="danger" onclick="removeFuel('${f.id}')">🗑️ ${t('delete')}</button></div></div>`).join(''):`<div class="card muted">${t('noRecords')}</div>`}</div>`}
+function additionalHTML(){let v=vehicle(selected),a=v.additional||{};return `<div class="app">${header(t('additional'))}<div class="card"><b>${esc(v.name)}</b><div class="small muted" style="margin-top:5px">${t('additionalInfo')}</div></div><div class="form"><div class="section">🛞 ${t('tyres')}</div><div class="field"><label>${t('frontTyres')}</label><input id="tyreFront" value="${esc(a.tyreFront||'')}" placeholder="${t('tyreNote')}"></div><div class="field"><label>${t('rearTyres')}</label><input id="tyreRear" value="${esc(a.tyreRear||'')}" placeholder="${t('tyreNote')}"></div></div><div class="form"><div class="section">🔋 ${t('battery')}</div><div class="field"><label>${t('batteryType')}</label><input id="batType" value="${esc(a.batteryType||'')}"></div><div class="field"><label>${t('batterySize')}</label><input id="batSize" value="${esc(a.batterySize||'')}" placeholder="95 Ah AGM"></div></div><div class="form"><div class="section">🛡️ ${t('insurance')}</div><div class="small muted">${t('insuranceNote')}</div><div class="field"><label>${t('company')}</label><input id="ins" value="${esc(a.insurance||'')}"></div><div class="field"><label>${t('policy')}</label><input id="inspol" value="${esc(a.insurancePolicy||'')}"></div><div class="field"><label>${t('start')}</label><input id="insstart" type="date" value="${esc(a.insuranceStart||'')}"></div><div class="field"><label>${t('end')}</label><input id="insend" type="date" value="${esc(a.insuranceEnd||'')}"></div></div><div class="form"><div class="section">🔍 ITV</div><div class="field"><label>${uiLang==='en'?'Next MOT / ITV':'Próxima ITV'}</label><input id="itvnext" type="date" value="${esc(a.itvNext||'')}"></div><div class="inlineNote">${uiLang==='en'?'With reminders on, you get a notice 30 days, 7 days and on the day.':'Con los avisos activados te avisa 30 días antes, 7 días antes y el mismo día.'}</div></div><button class="primary" style="width:100%" onclick="saveAdditional()">${t('saveChanges')}</button></div>`}
+function saveAdditional(){let v=vehicle(selected);v.additional={batteryType:document.getElementById('batType').value.trim(),batterySize:document.getElementById('batSize').value.trim(),tyreFront:document.getElementById('tyreFront').value.trim(),tyreRear:document.getElementById('tyreRear').value.trim(),insurance:document.getElementById('ins').value.trim(),insurancePolicy:document.getElementById('inspol').value.trim(),insuranceStart:document.getElementById('insstart').value,insuranceEnd:document.getElementById('insend').value,itvNext:document.getElementById('itvnext').value};save();goBack();toast(t('changesSaved'))}
+function obligationsHTML(){let v=vehicle(selected),arr=db.obligations.filter(o=>o.vehicleId===v.id).sort((a,b)=>String(b.date||'').localeCompare(String(a.date||'')));return `<div class="app">${header(t('obligations'))}<div class="card"><b>${esc(v.name)}</b><div class="small muted" style="margin-top:5px">${uiLang==='en'?'Insurance, tax, ITV, fines and other obligations.':'Seguro, viñeta, ITV, multas y otras obligaciones.'}</div></div><div class="reportBtns"><button class="primary" onclick="editObligationId=null;openObligationModal()">＋ ${t('newObligation')}</button></div>${arr.length?arr.map(o=>`<div class="card"><div class="row"><div><b>${esc(o.type)}</b><div class="small muted">${showDate(o.date)}</div></div><b>${o.cost!=null&&o.cost!==''?eur(o.cost):'—'}</b></div>${o.type==='ITV'?`<div style="margin-top:8px;font-weight:800">${o.status==='desfavorable'?'🔴 '+t('unfavorable'):'🟢 '+t('favorable')}</div>${o.status==='desfavorable'&&o.reason?`<div class="small" style="margin-top:8px"><b>${t('reason')}:</b> ${esc(o.reason)}</div>`:''}`:''}${o.notes?`<div class="small" style="margin-top:8px">${esc(o.notes)}</div>`:''}<div class="recordActions"><button onclick="editObligation('${o.id}')">✏️ ${t('edit')}</button><button class="danger" onclick="removeObligation('${o.id}')">🗑️ ${t('delete')}</button></div></div>`).join(''):`<div class="card muted">${t('noRecords')}</div>`}</div>`}
 function openObligationModal(id=null){let o=id?db.obligations.find(x=>x.id===id):null,st=o?.status||'favorable';openModal(id?t('editObligation'):t('newObligation'),`<div class="field"><label>${t('date')}</label><input id="odate" type="date" value="${o?.date||dateISO()}"></div><div class="field"><label>${uiLang==='en'?'Type':'Tipo'}</label><select id="otype" onchange="toggleObligationFields()"><option ${o?.type==='Seguro'?'selected':''}>Seguro</option><option ${o?.type==='Viñeta / impuesto'?'selected':''}>Viñeta / impuesto</option><option ${o?.type==='ITV'?'selected':''}>ITV</option><option ${o?.type==='Multa'?'selected':''}>Multa</option><option ${o?.type==='Otros'?'selected':''}>Otros</option></select></div><div id="itvFields" ${o?.type==='ITV'?'':'style="display:none"'}><div class="field"><label>${t('result')}</label><select id="ostatus"><option value="favorable" ${st==='favorable'?'selected':''}>🟢 ${t('favorable')}</option><option value="desfavorable" ${st==='desfavorable'?'selected':''}>🔴 ${t('unfavorable')}</option></select></div><div class="field"><label>${t('reason')}</label><textarea id="oreason">${esc(o?.reason||'')}</textarea></div></div><div class="field"><label>${t('optionalCost')}</label><input id="ocost" type="number" step="0.01" inputmode="decimal" value="${o?.cost??''}"></div><div class="field"><label>${t('description')}</label><textarea id="onotes">${esc(o?.notes||'')}</textarea></div>`,`<button onclick="closeModal()">${t('cancel')}</button><button class="primary" onclick="saveObligation(${id?`'${id}'`:'null'})">${t('save')}</button>`)}
 function toggleObligationFields(){let show=document.getElementById('otype')?.value==='ITV',el=document.getElementById('itvFields');if(el)el.style.display=show?'block':'none'}
 function editObligation(id){editObligationId=id;openObligationModal(id)}
 function saveObligation(id){let v=vehicle(selected),date=document.getElementById('odate').value,type=document.getElementById('otype').value,costRaw=document.getElementById('ocost').value.trim(),cost=costRaw===''?null:Number(costRaw),status=type==='ITV'?document.getElementById('ostatus').value:'',reason=type==='ITV'&&status==='desfavorable'?(document.getElementById('oreason').value.trim()||''):'';if(!date||cost!==null&&(!isFinite(cost)||cost<0))return toast(t('checkData'));if(type==='ITV'&&status==='desfavorable'&&!reason)return toast(uiLang==='en'?'Enter the reason':'Indica el motivo');let item={id:id||uid(),vehicleId:v.id,date,type,cost,status,reason,notes:document.getElementById('onotes').value.trim()};if(id){let idx=db.obligations.findIndex(x=>x.id===id);if(idx>=0)db.obligations[idx]=item}else db.obligations.push(item);save();closeModal();render();toast(t('entrySaved'))}
 function removeObligation(id){confirmApp(uiLang==='en'?'Delete this entry?':'¿Eliminar esta entrada?',uiLang==='en'?'This record will be deleted.':'Este registro se eliminará.',()=>{db.obligations=db.obligations.filter(x=>x.id!==id);save();render();toast(t('entryDeleted'))})}
 function openVehicleExpenses(id){if(!vehicle(id))return toast(t('noVehicle'));expenseVehicle=id;expenseReturn='vehicle';expensePeriod='all';expenseFrom='';expenseTo='';navigate('expenses')}
-function periodRange(){if(expensePeriod==='all')return [null,null];let now=new Date(),to=dateISO(),from=new Date(now);if(expensePeriod==='month')from.setDate(1);else if(expensePeriod==='3m')from.setMonth(from.getMonth()-3);else if(expensePeriod==='year')from.setMonth(0,1);else if(expensePeriod==='12m')from.setFullYear(from.getFullYear()-1);else return [expenseFrom||null,expenseTo||null];return [from.toISOString().slice(0,10),to]}
-function expensesHTML(){let sv=expenseVehicle==='all'?null:vehicle(expenseVehicle),vs=sv?[sv]:db.vehicles,[from,to]=periodRange(),sum=vs.reduce((a,v)=>{a.maintenance+=maintenanceCost(v,from,to);a.fuel+=fuelCost(v,from,to);a.obligations+=obligationsCost(v,from,to);a.total+=totalExpense(v,from,to);return a},{maintenance:0,fuel:0,obligations:0,total:0});return `<div class="app">${header(t('expenses'))}<div class="form"><div class="field"><label>${t('vehicle')}</label><select onchange="expenseVehicle=this.value;render()"><option value="all">${t('allVehicles')}</option>${db.vehicles.map(v=>`<option value="${v.id}" ${expenseVehicle===v.id?'selected':''}>${esc(v.name)}</option>`).join('')}</select></div><div class="field"><label>${t('period')}</label><select onchange="expensePeriod=this.value;render()"><option value="all" ${expensePeriod==='all'?'selected':''}>${t('all')}</option><option value="month" ${expensePeriod==='month'?'selected':''}>${t('thisMonth')}</option><option value="3m" ${expensePeriod==='3m'?'selected':''}>${t('last3m')}</option><option value="year" ${expensePeriod==='year'?'selected':''}>${t('thisYear')}</option><option value="12m" ${expensePeriod==='12m'?'selected':''}>${t('last12m')}</option><option value="custom" ${expensePeriod==='custom'?'selected':''}>${t('custom')}</option></select></div>${expensePeriod==='custom'?`<div class="field"><label>${t('from')}</label><input type="date" value="${expenseFrom}" onchange="expenseFrom=this.value;render()"></div><div class="field"><label>${t('to')}</label><input type="date" value="${expenseTo}" onchange="expenseTo=this.value;render()"></div>`:''}</div><div class="card"><div class="sub">${sv?esc(sv.name):t('allVehicles')}</div><div class="expense">${eur(sum.total)}</div><div class="line"><div class="row"><span>🔧 ${t('costMaintenance')}</span><b>${eur(sum.maintenance)}</b></div></div><div class="line"><div class="row"><span>⛽ ${t('costFuel')}</span><b>${eur(sum.fuel)}</b></div></div><div class="line"><div class="row"><span>🧾 ${t('costObligations')}</span><b>${eur(sum.obligations)}</b></div></div>${sv?`<div class="row" style="margin-top:12px"><b>${t('costKmPeriod')}</b><b>${costKm(sv,from,to)!=null?eur(costKm(sv,from,to))+' / km':'—'}</b></div>`:''}</div><div class="reportBtns"><button onclick="exportExcelForVehicle('${sv?sv.id:'all'}')">📊 ${t('exportExcel')}</button></div>${!sv?`<div class="section">${t('byVehicle')}</div>${db.vehicles.map(v=>`<div class="card" onclick="expenseVehicle='${v.id}';render()"><div class="row"><b>${kindIcon(v)} ${esc(v.name)}</b><b>${eur(totalExpense(v,from,to))}</b></div><div class="small muted" style="margin-top:7px">🔧 ${eur(maintenanceCost(v,from,to))} · ⛽ ${eur(fuelCost(v,from,to))} · 🧾 ${eur(obligationsCost(v,from,to))}</div></div>`).join('')||'<div class="card muted">No hay vehículos.</div>'}`:''}</div>`}
-function settingsHTML(){return `<div class="app">${header(t('settings'))}<div class="form"><div class="section">🌐 ${t('language')}</div><div class="small muted" style="margin:5px 0 12px">${t('settingsLanguage')}</div><select onchange="uiLang=this.value;localStorage.setItem('mv_lang',uiLang);render()"><option value="es" ${uiLang==='es'?'selected':''}>${t('spanish')}</option><option value="en" ${uiLang==='en'?'selected':''}>${t('english')}</option></select></div></div>`}
-function openModal(title,body,actions){document.getElementById('app').insertAdjacentHTML('beforeend',`<div class="modal" id="modal"><div class="modalBox"><h3>${esc(title)}</h3>${body}<div class="modalActions">${actions}</div></div></div>`)}
+function periodRange(){if(expensePeriod==='all')return [null,null];let now=new Date(),to=dateISO(),from=new Date(now);if(expensePeriod==='month')from.setDate(1);else if(expensePeriod==='3m')from.setMonth(from.getMonth()-3);else if(expensePeriod==='year')from.setMonth(0,1);else if(expensePeriod==='12m')from.setFullYear(from.getFullYear()-1);else return [expenseFrom||null,expenseTo||null];return [localISO(from),to]}
+function expensesHTML(){
+  const en=uiLang==='en',sv=expenseVehicle==='all'?null:vehicle(expenseVehicle),vs=sv?[sv]:db.vehicles,[from,to]=periodRange();
+  const sum=vs.reduce((a,v)=>{a.maintenance+=maintenanceCost(v,from,to);a.fuel+=fuelCost(v,from,to);a.other+=obligationsCost(v,from,to);return a},{maintenance:0,fuel:0,other:0});
+  sum.total=sum.maintenance+sum.fuel+sum.other;
+  const pct=x=>sum.total>0?Math.round(x/sum.total*100):0;
+  const otherLabel=en?'Other':'Otros',otherHint=en?'Insurance, road tax, MOT, fines…':'Seguro, viñeta, ITV, multas…';
+  const block=(icon,label,hint,val,cls)=>`<div class="expBlock ${cls}"><div class="row"><span class="expIco">${icon}</span><span class="small muted">${pct(val)}%</span></div><div class="expLabel">${label}</div>${hint?`<div class="expHint">${hint}</div>`:''}<div class="expVal">${eur(val)}</div><div class="bar"><span style="width:${pct(val)}%"></span></div></div>`;
+  const periodTxt={all:t('all'),month:t('thisMonth'),'3m':t('last3m'),year:t('thisYear'),'12m':t('last12m'),custom:t('custom')}[expensePeriod]||'';
+  return `<div class="app">${header(t('expenses'))}
+  <div class="form"><div class="field"><label>${t('vehicle')}</label><select onchange="expenseVehicle=this.value;render()"><option value="all">${t('allVehicles')}</option>${db.vehicles.map(v=>`<option value="${v.id}" ${expenseVehicle===v.id?'selected':''}>${esc(v.name)}</option>`).join('')}</select></div><div class="field"><label>${t('period')}</label><select onchange="expensePeriod=this.value;render()"><option value="all" ${expensePeriod==='all'?'selected':''}>${t('all')}</option><option value="month" ${expensePeriod==='month'?'selected':''}>${t('thisMonth')}</option><option value="3m" ${expensePeriod==='3m'?'selected':''}>${t('last3m')}</option><option value="year" ${expensePeriod==='year'?'selected':''}>${t('thisYear')}</option><option value="12m" ${expensePeriod==='12m'?'selected':''}>${t('last12m')}</option><option value="custom" ${expensePeriod==='custom'?'selected':''}>${t('custom')}</option></select></div>${expensePeriod==='custom'?`<div class="grid"><div class="field"><label>${t('from')}</label><input type="date" value="${expenseFrom}" onchange="expenseFrom=this.value;render()"></div><div class="field"><label>${t('to')}</label><input type="date" value="${expenseTo}" onchange="expenseTo=this.value;render()"></div></div>`:''}</div>
+  <div class="card hero"><div class="small muted">${sv?esc(sv.name):(en?`Total · all vehicles (${db.vehicles.length})`:`Total · todos los vehículos (${db.vehicles.length})`)} · ${periodTxt}</div><div class="expense">${eur(sum.total)}</div><div class="stackBar">${sum.total>0?`<span class="sMaint" style="width:${sum.maintenance/sum.total*100}%"></span><span class="sFuel" style="width:${sum.fuel/sum.total*100}%"></span><span class="sOther" style="width:${sum.other/sum.total*100}%"></span>`:''}</div>${sv?`<div class="small muted" style="margin-top:10px">${t('costKmPeriod')}: <b>${costKm(sv,from,to)!=null?eur(costKm(sv,from,to))+' / km':'—'}</b></div>`:''}</div>
+  <div class="expGrid">${block('🔧',t('costMaintenance'),'',sum.maintenance,'cMaint')}${block('⛽',t('costFuel'),'',sum.fuel,'cFuel')}${block('🧾',otherLabel,otherHint,sum.other,'cOther')}</div>
+  <div class="reportBtns"><button onclick="exportExcelForVehicle('${sv?sv.id:'all'}')">📗 ${t('exportExcel')}</button></div>
+  ${!sv?`<div class="section">${t('byVehicle')}</div>${db.vehicles.map(v=>{const tv=totalExpense(v,from,to);return `<div class="card vehicle" onclick="expenseVehicle='${v.id}';render()"><div class="vehicleInfo"><div class="row"><b>${kindIcon(v)} ${esc(v.name)}</b><b>${eur(tv)}</b></div><div class="small muted" style="margin-top:7px">🔧 ${eur(maintenanceCost(v,from,to))} · ⛽ ${eur(fuelCost(v,from,to))} · 🧾 ${eur(obligationsCost(v,from,to))}</div><div class="bar" style="margin-top:9px"><span style="width:${sum.total>0?tv/sum.total*100:0}%"></span></div></div></div>`}).join('')||`<div class="card muted">${t('noVehicles')}</div>`}`:''}
+  </div>`}
+function settingsHTML(){
+  const en=uiLang==='en',hasA=typeof Android!=='undefined'&&!!Android.isLockEnabled;
+  let lockOn=false,lockAvail=false,remOn=false;
+  if(hasA){try{lockOn=Android.isLockEnabled();lockAvail=Android.isLockAvailable();remOn=Android.areRemindersEnabled()}catch(e){}}
+  const last=localStorage.getItem('mv_last_backup');
+  return `<div class="app">${header(t('settings'))}
+  <div class="section">🌐 ${t('language')}</div><div class="form"><div class="small muted" style="margin-bottom:10px">${t('settingsLanguage')}</div><select onchange="uiLang=this.value;localStorage.setItem('mv_lang',uiLang);save();render()"><option value="es" ${uiLang==='es'?'selected':''}>${t('spanish')}</option><option value="en" ${uiLang==='en'?'selected':''}>${t('english')}</option></select></div>
+  <div class="section">🔒 ${en?'Security':'Seguridad'}</div><div class="form"><div class="switchRow"><div><b>${en?'Lock with fingerprint / PIN':'Bloqueo con huella / PIN'}</b><div class="inlineNote">${!hasA?(en?'Only available in the Android app.':'Solo disponible en la app de Android.'):!lockAvail?(en?'Set a screen lock (PIN, pattern or fingerprint) on your phone first.':'Primero configura un bloqueo de pantalla (PIN, patrón o huella) en el móvil.'):(en?'Asks for your fingerprint or phone PIN when opening the app and after 30 s in the background. Also hides the content in recent apps.':'Pide la huella o el PIN del móvil al abrir la app y tras 30 s en segundo plano. También oculta el contenido en apps recientes.')}</div></div><button class="switch ${lockOn?'on':''}" ${!hasA||(!lockAvail&&!lockOn)?'disabled':''} onclick="toggleLock(${!lockOn})" aria-label="lock"></button></div></div>
+  <div class="section">🔔 ${en?'Reminders':'Avisos'}</div><div class="form"><div class="switchRow"><div><b>${en?'Due date notifications':'Avisos de vencimientos'}</b><div class="inlineNote">${hasA?(en?'Scheduled maintenance, insurance expiry, next MOT and backup reminder. Checked every morning.':'Mantenimientos programados, vencimiento del seguro, próxima ITV y recordatorio de copia. Se revisa cada mañana.'):(en?'Only available in the Android app.':'Solo disponible en la app de Android.')}</div></div><button class="switch ${remOn?'on':''}" ${!hasA?'disabled':''} onclick="toggleReminders(${!remOn})" aria-label="reminders"></button></div>${remOn?`<div class="inlineNote" style="margin-top:8px">📅 ${en?'Pending reminders':'Avisos previstos'}: ${buildReminders().filter(r=>r.until>=dateISO()).length}</div>`:''}</div>
+  <div class="section">☁️ ${t('backup')}</div><div class="form"><div class="small muted">${en?'Last backup':'Última copia'}: <b>${last?showDate(last):(en?'never':'nunca')}</b></div><div class="reportBtns"><button class="primary" onclick="backupData()">☁️ ${t('backup')}</button><button onclick="restoreData()">📥 ${t('restore')}</button></div></div>
+  <div class="card"><div class="small">🛡️ ${en?'Your data stays on this phone. The app has no internet access.':'Tus datos se quedan en este móvil. La app no tiene acceso a internet.'}</div><div class="inlineNote">${en?'Version':'Versión'} 1.25</div></div>
+  </div>`}
+function toggleLock(on){if(typeof Android==='undefined')return;try{Android.setLockEnabled(!!on)}catch(e){toast(t('checkData'))}}
+window.onLockChanged=(on,msg)=>{if(msg)toast(msg);else toast(on?(uiLang==='en'?'Lock enabled':'Bloqueo activado'):(uiLang==='en'?'Lock disabled':'Bloqueo desactivado'));if(screen==='settings')render()};
+function toggleReminders(on){if(typeof Android==='undefined')return;try{Android.setRemindersEnabled(!!on);syncReminders()}catch(e){toast(t('checkData'))}}
+window.onRemindersChanged=(on,msg)=>{if(msg)toast(msg);else toast(on?(uiLang==='en'?'Reminders enabled':'Avisos activados'):(uiLang==='en'?'Reminders disabled':'Avisos desactivados'));syncReminders();if(screen==='settings')render()};
+window.onBackupSaved=()=>{try{localStorage.setItem('mv_last_backup',dateISO())}catch(e){}syncReminders();render()};
+function daysSince(iso){return Math.floor((parseISO(dateISO())-parseISO(iso))/86400000)}
+function addDaysISO(iso,n){const d=parseISO(iso);d.setDate(d.getDate()+n);return localISO(d)}
+function backupNoticeHTML(){
+  if(!db.vehicles.length)return '';const last=localStorage.getItem('mv_last_backup'),en=uiLang==='en';
+  if(last&&daysSince(last)<30)return '';
+  return `<div class="card notice"><span style="font-size:24px">☁️</span><div class="grow"><b>${last?(en?`No backup for ${daysSince(last)} days`:`Hace ${daysSince(last)} días sin copia`):(en?'You have no backup yet':'Aún no tienes copia de seguridad')}</b><div class="small muted">${en?'If you lose or change phone, you would lose your data.':'Si pierdes o cambias de móvil, perderías tus datos.'}</div></div><button class="primary" onclick="backupData()">${en?'Back up':'Hacer copia'}</button></div>`}
+/* Avisos: se calculan aquí y se pasan a Android, que los revisa cada mañana aunque la app esté cerrada */
+function buildReminders(){
+  const en=uiLang==='en',out=[],today=dateISO();
+  const push=(key,date,until,title,text)=>{if(date&&until)out.push({key,date,until,title,text})};
+  db.vehicles.forEach(v=>{
+    db.maintenance.filter(m=>m.vehicleId===v.id&&m.next).forEach(m=>{
+      const label=(m.types||[]).map(x=>x==='Otros'&&m.otherText?m.otherText:x).join(' + ')||t('maintenance'),n=m.next,title=`${kindIcon(v)} ${v.name}: ${label}`;
+      if(n.date){
+        push(`m|${m.id}|${n.date}|7`,addDaysISO(n.date,-7),addDaysISO(n.date,-1),title,en?`Due on ${showDate(n.date)}`:`Toca el ${showDate(n.date)}`);
+        push(`m|${m.id}|${n.date}|0`,n.date,addDaysISO(n.date,30),title,en?`Due since ${showDate(n.date)}`:`Toca desde el ${showDate(n.date)}`);
+      }
+      if(n.km!=null){const rem=Number(n.km)-Number(v.km||0);
+        if(rem<=0)push(`m|${m.id}|${n.km}|over`,today,addDaysISO(today,30),title,en?`Overdue: it was due at ${fmt(n.km)} km`:`Pendiente: tocaba a los ${fmt(n.km)} km`);
+        else if(rem<=500)push(`m|${m.id}|${n.km}|near`,today,addDaysISO(today,30),title,en?`${fmt(rem)} km to go (${fmt(n.km)} km)`:`Faltan ${fmt(rem)} km (a los ${fmt(n.km)} km)`);
+      }
+    });
+    const a=v.additional||{};
+    [['ins',a.insuranceEnd,en?'Insurance':'Seguro'],['itv',a.itvNext,'ITV']].forEach(([k,d,label])=>{
+      if(!/^\d{4}-\d{2}-\d{2}$/.test(d||''))return;
+      [[30,8],[7,1],[0,-3]].forEach(([n,stop])=>push(`${k}|${v.id}|${d}|${n}`,addDaysISO(d,-n),addDaysISO(d,-stop),`${kindIcon(v)} ${v.name}: ${label}`,en?`Expires on ${showDate(d)}`:`Vence el ${showDate(d)}`));
+    });
+  });
+  if(db.vehicles.length){const last=localStorage.getItem('mv_last_backup'),due=last?addDaysISO(last,30):today;
+    push(`backup|${due}`,due,addDaysISO(due,365),en?'☁️ Backup':'☁️ Copia de seguridad',en?'It has been a while since your last backup. Open the app to make one.':'Hace tiempo que no haces una copia. Abre la app y haz una para no perder tus datos.');}
+  return out;
+}
+function syncReminders(){try{if(typeof Android!=='undefined'&&Android.setReminders)Android.setReminders(JSON.stringify(buildReminders()))}catch(e){}}
+function openModal(title,body,actions){closeModal();document.getElementById('app').insertAdjacentHTML('beforeend',`<div class="modal" id="modal"><div class="modalBox"><div class="modalGrip"></div><h3>${esc(title)}</h3>${body}<div class="modalActions">${actions}</div></div></div>`);const m=document.getElementById('modal');m.addEventListener('click',e=>{if(e.target===m)closeModal()})}
 function closeModal(){document.getElementById('modal')?.remove()}
-function confirmApp(title,message,onYes){openModal(title,`<p>${esc(message)}</p>`,`<button onclick="closeModal()">${t('cancel')}</button><button class="danger" id="confirmYes">${t('delete')}</button>`);document.getElementById('confirmYes').onclick=()=>{closeModal();onYes()}}
-function searchHistory(q){let cards=[...document.querySelectorAll('.historyCard')];cards.forEach(c=>c.style.display=!q||c.textContent.toLowerCase().includes(q.toLowerCase())?'':'none')}
-function exportExcelForVehicle(idOrAll){let ids=idOrAll==='all'?db.vehicles.map(v=>v.id):[idOrAll],rows=[['Vehículo','Tipo','Fecha','Kilómetros','Descripción','Litros','€/litro','Coste','Notas','Resultado ITV']];ids.forEach(id=>{db.maintenance.filter(m=>m.vehicleId===id).forEach(m=>rows.push([vehicle(id)?.name||'',t('maintenance'),m.date,m.km,(m.types||[]).map(x=>x==='Otros'&&m.otherText?`Otros — ${m.otherText}`:x).join(' + '),'','',m.total||0,m.notes||'','']));db.fuel.filter(f=>f.vehicleId===id).forEach(f=>rows.push([vehicle(id)?.name||'',t('fuel'),f.date,f.km,'Repostaje',f.liters||0,f.price||0,f.total||0,'','']));db.obligations.filter(o=>o.vehicleId===id).forEach(o=>rows.push([vehicle(id)?.name||'',o.type,o.date,'',o.type==='ITV'?(o.reason||'ITV'):'', '', '',o.cost??'',o.notes||'',o.type==='ITV'?(o.status==='desfavorable'?t('unfavorable'):t('favorable')):'']))});let body=rows.map(r=>'<tr>'+r.map(x=>`<td>${esc(x)}</td>`).join('')+'</tr>').join(''),html='<!doctype html><html><meta charset="utf-8"><table border="1">'+body+'</table></html>',title=idOrAll==='all'?'Vehiculos - Toda la flota':(vehicle(idOrAll)?.name||'Vehiculo');if(window.Android?.generateExcel){Android.generateExcel(title+'.xls',html);return}let blob=new Blob([html],{type:'application/vnd.ms-excel'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=title+'.xls';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)}
-function backupData(){if(window.Android?.createBackup)Android.createBackup('vehiculos_backup.json',JSON.stringify(db));else toast(uiLang==='en'?'Backup unavailable':'Copia no disponible')}
+function confirmApp(title,message,onYes,yesLabel){openModal(title,`<p>${esc(message)}</p>`,`<button onclick="closeModal()">${t('cancel')}</button><button class="${yesLabel?'primary':'danger'}" id="confirmYes">${esc(yesLabel||t('delete'))}</button>`);document.getElementById('confirmYes').onclick=()=>{closeModal();onYes()}}
+/* ===== Excel (.xlsx real, sin librerías) ===== */
+const CRC_TABLE=(()=>{let t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+function crc32(b){let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=CRC_TABLE[(c^b[i])&0xFF]^(c>>>8);return (c^0xFFFFFFFF)>>>0}
+function zipStore(files){
+  const enc=new TextEncoder(),parts=[],central=[];let offset=0;
+  const d=new Date(),dosTime=(d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1),dosDate=((d.getFullYear()-1980)<<9)|((d.getMonth()+1)<<5)|d.getDate();
+  for(const f of files){
+    const name=enc.encode(f.name),data=typeof f.data==='string'?enc.encode(f.data):f.data,crc=crc32(data);
+    const h=new DataView(new ArrayBuffer(30));
+    h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,0,true);h.setUint16(10,dosTime,true);h.setUint16(12,dosDate,true);
+    h.setUint32(14,crc,true);h.setUint32(18,data.length,true);h.setUint32(22,data.length,true);h.setUint16(26,name.length,true);h.setUint16(28,0,true);
+    parts.push(new Uint8Array(h.buffer),name,data);
+    const c=new DataView(new ArrayBuffer(46));
+    c.setUint32(0,0x02014b50,true);c.setUint16(4,20,true);c.setUint16(6,20,true);c.setUint16(8,0x0800,true);c.setUint16(10,0,true);c.setUint16(12,dosTime,true);c.setUint16(14,dosDate,true);
+    c.setUint32(16,crc,true);c.setUint32(20,data.length,true);c.setUint32(24,data.length,true);c.setUint16(28,name.length,true);c.setUint32(42,offset,true);
+    central.push(new Uint8Array(c.buffer),name);
+    offset+=30+name.length+data.length;
+  }
+  const cdSize=central.reduce((s,p)=>s+p.length,0),e=new DataView(new ArrayBuffer(22));
+  e.setUint32(0,0x06054b50,true);e.setUint16(8,files.length,true);e.setUint16(10,files.length,true);e.setUint32(12,cdSize,true);e.setUint32(16,offset,true);
+  const all=[...parts,...central,new Uint8Array(e.buffer)],out=new Uint8Array(all.reduce((s,p)=>s+p.length,0));let p=0;for(const a of all){out.set(a,p);p+=a.length}
+  return out;
+}
+function xmlEsc(s){return String(s??'').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,'').replace(/[&<>"]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[m]))}
+function colName(i){let s='';i++;while(i>0){let m=(i-1)%26;s=String.fromCharCode(65+m)+s;i=Math.floor((i-1)/26)}return s}
+function excelDate(iso){const m=/^(\d{4})-(\d{2})-(\d{2})/.exec(String(iso||''));if(!m)return null;return (Date.UTC(+m[1],+m[2]-1,+m[3])-Date.UTC(1899,11,30))/86400000}
+/* cols: [{h:'Título',w:ancho,type:'text'|'date'|'int'|'eur'|'eur3'|'num'}] */
+function sheetXML(cols,rows){
+  const st={date:2,eur:3,int:4,eur3:5,num:6};
+  const cell=(v,ci,ri,type)=>{const r=colName(ci)+ri;if(v===''||v==null)return '';
+    if(type==='date'){const n=excelDate(v);if(n!=null)return `<c r="${r}" s="2"><v>${n}</v></c>`}
+    if(type&&type!=='text'&&type!=='date'){const n=Number(v);if(isFinite(n))return `<c r="${r}" s="${st[type]}"><v>${n}</v></c>`}
+    return `<c r="${r}" t="inlineStr"><is><t xml:space="preserve">${xmlEsc(v)}</t></is></c>`};
+  const head=`<row r="1">${cols.map((c,i)=>`<c r="${colName(i)}1" s="1" t="inlineStr"><is><t>${xmlEsc(c.h)}</t></is></c>`).join('')}</row>`;
+  const body=rows.map((row,ri)=>`<row r="${ri+2}">${row.map((v,ci)=>cell(v,ci,ri+2,cols[ci].type)).join('')}</row>`).join('');
+  const last=colName(cols.length-1)+(rows.length+1);
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><sheetFormatPr defaultRowHeight="15"/><cols>${cols.map((c,i)=>`<col min="${i+1}" max="${i+1}" width="${c.w||14}" customWidth="1"/>`).join('')}</cols><sheetData>${head}${body}</sheetData>${rows.length?`<autoFilter ref="A1:${last}"/>`:''}</worksheet>`;
+}
+function buildXlsx(sheets){
+  const files=[
+    {name:'[Content_Types].xml',data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,i)=>`<Override PartName="/xl/worksheets/sheet${i+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')}</Types>`},
+    {name:'_rels/.rels',data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>`},
+    {name:'xl/workbook.xml',data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheets.map((s,i)=>`<sheet name="${xmlEsc(s.name.replace(/[\\\/?*\[\]:]/g,' ').slice(0,31))}" sheetId="${i+1}" r:id="rId${i+1}"/>`).join('')}</sheets></workbook>`},
+    {name:'xl/_rels/workbook.xml.rels',data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,i)=>`<Relationship Id="rId${i+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i+1}.xml"/>`).join('')}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`},
+    {name:'xl/styles.xml',data:`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="3"><numFmt numFmtId="164" formatCode="#,##0.00\\ &quot;€&quot;"/><numFmt numFmtId="165" formatCode="#,##0.000\\ &quot;€&quot;"/><numFmt numFmtId="166" formatCode="dd/mm/yyyy"/></numFmts><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF2F5BEA"/><bgColor indexed="64"/></patternFill></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="7"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="2" borderId="0" xfId="0" applyFont="1" applyFill="1"/><xf numFmtId="166" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/><xf numFmtId="164" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/><xf numFmtId="3" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/><xf numFmtId="165" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/><xf numFmtId="4" fontId="0" fillId="0" borderId="0" xfId="0" applyNumberFormat="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>`}
+  ];
+  sheets.forEach((s,i)=>files.push({name:`xl/worksheets/sheet${i+1}.xml`,data:sheetXML(s.cols,s.rows)}));
+  return zipStore(files);
+}
+function bytesToBase64(u8){let s='';for(let i=0;i<u8.length;i+=0x8000)s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000));return btoa(s)}
+function exportExcelForVehicle(idOrAll){
+  try{
+    const en=uiLang==='en',ids=idOrAll==='all'?db.vehicles.map(v=>v.id):[idOrAll];
+    const recCols=[{h:t('vehicle'),w:20},{h:en?'Type':'Tipo',w:18},{h:t('date'),w:12,type:'date'},{h:t('km'),w:12,type:'int'},{h:en?'Description':'Descripción',w:36},{h:t('liters'),w:10,type:'num'},{h:en?'€/litre':'€/litro',w:10,type:'eur3'},{h:en?'Cost':'Coste',w:12,type:'eur'},{h:t('notes'),w:30},{h:en?'MOT result':'Resultado ITV',w:15}];
+    const rows=[];
+    ids.forEach(id=>{const name=vehicle(id)?.name||'';
+      db.maintenance.filter(m=>m.vehicleId===id).forEach(m=>rows.push([name,t('maintenance'),m.date,m.km,(m.types||[]).map(x=>x==='Otros'&&m.otherText?`Otros — ${m.otherText}`:x).join(' + '),'','',Number(m.total||0),m.notes||'','']));
+      db.fuel.filter(f=>f.vehicleId===id).forEach(f=>rows.push([name,t('fuel'),f.date,f.km,en?'Refuel':'Repostaje',Number(f.liters||0),Number(f.price||0),Number(f.total||0),'','']));
+      db.obligations.filter(o=>o.vehicleId===id).forEach(o=>rows.push([name,o.type,o.date,'',o.type==='ITV'?(o.reason||'ITV'):'','','',o.cost??'',o.notes||'',o.type==='ITV'?(o.status==='desfavorable'?t('unfavorable'):t('favorable')):'']));
+    });
+    rows.sort((a,b)=>String(a[0]).localeCompare(String(b[0]),'es')||String(b[2]||'').localeCompare(String(a[2]||'')));
+    const sumCols=[{h:t('vehicle'),w:22},{h:en?'Current km':'Km actuales',w:13,type:'int'},{h:t('costMaintenance'),w:16,type:'eur'},{h:t('costFuel'),w:15,type:'eur'},{h:t('costObligations'),w:24,type:'eur'},{h:t('totalSpend'),w:14,type:'eur'},{h:t('costKm'),w:12,type:'eur3'}];
+    const sumRows=ids.map(vehicle).filter(Boolean).map(v=>[v.name,v.km,maintenanceCost(v),fuelCost(v),obligationsCost(v),totalExpense(v),costKm(v)??'']);
+    const bytes=buildXlsx([{name:en?'Records':'Registros',cols:recCols,rows},{name:en?'Summary':'Resumen',cols:sumCols,rows:sumRows}]);
+    const base=(idOrAll==='all'?(en?'Vehicles - Whole fleet':'Vehiculos - Toda la flota'):(vehicle(idOrAll)?.name||'Vehiculo')).replace(/[\\\/:*?"<>|]+/g,' ').trim()||'Vehiculos';
+    const filename=`${base} ${dateISO()}.xlsx`,mime='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+    if(window.Android?.saveFile){Android.saveFile(filename,mime,bytesToBase64(bytes));return}
+    const url=URL.createObjectURL(new Blob([bytes],{type:mime})),a=document.createElement('a');a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);
+  }catch(e){console.error(e);toast(uiLang==='en'?'Could not create the Excel file':'No se pudo generar el Excel')}
+}
+function backupData(){if(window.Android?.createBackup)Android.createBackup(`vehiculos_backup_${dateISO()}.json`,JSON.stringify({...db,_app:'vehiculos',_exported:new Date().toISOString()}));else toast(uiLang==='en'?'Backup unavailable':'Copia no disponible')}
 function restoreData(){if(window.Android?.importBackup)Android.importBackup();else toast(uiLang==='en'?'Restore unavailable':'Restauración no disponible')}
-window.onBackupImported=text=>{try{let x=JSON.parse(text);if(!x||!Array.isArray(x.vehicles))throw Error();db=x;db.maintenance=db.maintenance||[];db.fuel=db.fuel||[];db.obligations=db.obligations||[];db.vehicles.forEach(v=>{v.additional=v.additional||{};if(v.startKm==null)v.startKm=Number(v.km||0);});
-function hydratePhotos(){if(typeof Android==='undefined')return;for(const v of db.vehicles){try{const stored=Android.getPhoto(v.id);if(stored)v.photo=stored;else if(v.photo&&v.photo.startsWith('data:image/')){Android.savePhoto(v.id,v.photo);v.photo='';}}catch(e){}}save();}
-save();window.__nav=[];screen='home';selected=null;render();toast(uiLang==='en'?'Backup restored':'Copia restaurada')}catch(e){toast(uiLang==='en'?'Invalid backup':'Copia no válida')}}
-window.appBack=goBack;
+const SAFE_ID=/^[A-Za-z0-9_-]{1,80}$/;
+function sanitizeBackup(x){
+  if(!x||typeof x!=='object'||!Array.isArray(x.vehicles))throw Error('format');
+  const arr=a=>Array.isArray(a)?a.filter(o=>o&&typeof o==='object'):[];
+  const num=(n,d=0)=>{n=Number(n);return isFinite(n)?n:d};
+  const dt=d=>/^\d{4}-\d{2}-\d{2}$/.test(String(d||''))?String(d):'';
+  const idMap={},fixId=id=>{id=String(id??'');if(SAFE_ID.test(id))return id;if(!idMap[id])idMap[id]=uid();return idMap[id]};
+  const out={vehicles:[],maintenance:[],fuel:[],obligations:[],_obligationMigration:true};
+  arr(x.vehicles).forEach(v=>{const photo=typeof v.photo==='string'&&/^data:image\/(jpeg|jpg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(v.photo)?v.photo:'';
+    out.vehicles.push({...v,id:fixId(v.id),name:String(v.name||'—'),kind:['car','bike','bicycle'].includes(v.kind)?v.kind:'car',km:num(v.km),startKm:v.startKm==null?num(v.km):num(v.startKm),additional:v.additional&&typeof v.additional==='object'?v.additional:{},photo})});
+  const ids=new Set(out.vehicles.map(v=>v.id)),own=o=>ids.has(fixId(o.vehicleId));
+  const next=n=>n&&typeof n==='object'?{km:n.km==null?null:num(n.km),date:dt(n.date)||null}:null;
+  arr(x.maintenance).filter(own).forEach(m=>out.maintenance.push({...m,id:fixId(m.id),vehicleId:fixId(m.vehicleId),date:dt(m.date)||dateISO(),km:num(m.km),total:num(m.total),types:Array.isArray(m.types)?m.types.map(String):['Otros'],breakdown:arr(m.breakdown).map(b=>({name:String(b.name||''),price:num(b.price)})),next:next(m.next)}));
+  arr(x.fuel).filter(own).forEach(f=>out.fuel.push({...f,id:fixId(f.id),vehicleId:fixId(f.vehicleId),date:dt(f.date)||dateISO(),km:num(f.km),liters:num(f.liters),total:num(f.total),price:num(f.price)}));
+  arr(x.obligations).filter(own).forEach(o=>out.obligations.push({...o,id:fixId(o.id),vehicleId:fixId(o.vehicleId),date:dt(o.date)||dateISO(),type:String(o.type||'Otros'),cost:o.cost==null||o.cost===''?null:num(o.cost)}));
+  return out;
+}
+window.onBackupImported=text=>{
+  let x;
+  try{x=sanitizeBackup(JSON.parse(text))}catch(e){return toast(uiLang==='en'?'Invalid backup':'Copia no válida')}
+  const en=uiLang==='en';
+  confirmApp(en?'Restore this backup?':'¿Restaurar esta copia?',
+    en?`Your current data (${db.vehicles.length} vehicles) will be replaced by the backup (${x.vehicles.length} vehicles).`:`Tus datos actuales (${db.vehicles.length} vehículos) se sustituirán por los de la copia (${x.vehicles.length} vehículos).`,
+    ()=>{
+      db=x;
+      if(typeof Android!=='undefined')db.vehicles.forEach(v=>{try{if(v.photo)Android.savePhoto(v.id,v.photo);else{const p=Android.getPhoto(v.id);if(p)v.photo=p}}catch(e){}});
+      if(!save())return;
+      window.__nav=[];screen='home';selected=null;render();toast(en?'Backup restored':'Copia restaurada');
+    },en?'Restore':'Restaurar');
+};
+function appBack(){if(document.getElementById('modal')){closeModal();return true}if(screen==='home')return false;goBack();return true}
+window.appBack=appBack;
 render();
+syncReminders();
 </script></body></html>
